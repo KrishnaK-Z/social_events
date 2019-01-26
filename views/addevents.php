@@ -1,0 +1,79 @@
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+<form method="POST" action="http://localhost/social_events/public/events/addevent" enctype="multipart/form-data" class="grid" id="addEventForm">
+
+<div class="grid_item">
+<div class="input_label">Event Name *</div>
+<input type="text" name="eventName" class="input_box">
+<div class="error"></div>
+</div>
+
+
+<!-- <div class="grid_item item_pic_upload">
+<div class="image"><img src=""></div>
+<input type="file" name="profilePic" accept="image" class="input_box" style="position: absolute; bottom: 0;"><br/>
+</div> -->
+
+<div class="grid_item">
+<div class="input_label">Event Category</div>
+<select name="eventCategory" class="input_box">
+<option value="choose">--choose--</option>
+<option value="party">Party</option>
+</select>
+</div>
+
+<div class="grid_item">
+<div class="input_label">Event Date</div>
+<input type="date" name="eventDate" class="input_box">
+</div>
+
+<div class="grid_item">
+<div class="input_label">Start Time</div>
+<input type="time" name="startTime" class="input_box">
+</div>
+
+<div class="grid_item">
+<div class="input_label">End Time</div>
+<input type="time" name="endTime" class="input_box">
+</div>
+
+<div class="grid_item">
+<div class="input_label">Tickets </div>
+<input type="number" name="spots" class="input_box">
+</div>
+
+<div class="grid_item full_part" >
+<div class="input_label">Street Address *</div>
+<input type="text" name="streetAddress" class="input_box">
+<div class="error"></div>
+</div>
+
+<div class="grid_item">
+<div class="input_label">Area</div>
+<input type="text" name="area" class="input_box">
+</div>
+
+<div class="grid_item">
+<div class="input_label">Pin Code</div>
+<input type="number" name="pincode" class="input_box">
+</div>
+
+</div>
+
+<div class="grid_item full_part" style="justify-content: center;">
+<button type="submit" name="addevent" class="grid_item log_btn" id="addEventBtn">Add Event</button>
+</div>
+
+</form>
+
+<script src="./ajaxrequest/ajaxrequest.js"></script>
+
+</body>
+</html>
