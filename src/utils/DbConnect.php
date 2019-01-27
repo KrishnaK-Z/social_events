@@ -3,7 +3,6 @@
 namespace App\utils;
 use PDO;
 use PDOException;
-use App\utils\DB_Logger;
 class DbConnect
 {
 
@@ -39,10 +38,18 @@ class DbConnect
 
   public function hardCodeSelect($sql)
   {
-    $this->query = $this->conn->prepare($sql);
-    $this->query->execute();
-    $results = $this->query->fetchAll(PDO::FETCH_ASSOC);
-    return $results;
+    try {
+      $this->query = $this->conn->prepare($sql);
+      $this->query->execute();
+      $results = $this->query->fetchAll(PDO::FETCH_ASSOC);
+      return $results;
+    }
+    catch (PDOException $e){
+      $this->logger->log($e->getCode() , $e->getMessage());
+    }
+    catch (\Exception $e) {
+      $this->logger->log($e->getCode() , $e->getMessage());
+    }
   }
 
   //example $table-> name of the table string format
@@ -50,65 +57,47 @@ class DbConnect
   //$selectors-> string -> user_id,user_name
   public function selectBy($table, $wherePhrase = NULL, $selectors = '*')
   {
-      $where = $this->prepareNamedParams($wherePhrase);
-      if($where)
-      {
-          $sql = 'SELECT ' . $selectors . ' FROM ' . $table . ' WHERE ' . $where;
-          $this->query = $this->conn->prepare($sql);
+      try {
+        $where = $this->prepareNamedParams($wherePhrase);
+        if($where)
+        {
+            $sql = 'SELECT ' . $selectors . ' FROM ' . $table . ' WHERE ' . $where;
+            $this->query = $this->conn->prepare($sql);
 
-          foreach($wherePhrase as $param => $value)
-          {
-              $this->prepareBind($param,$value);
-          }
+            foreach($wherePhrase as $param => $value)
+            {
+                $this->prepareBind($param,$value);
+            }
 
+        }
+        else
+        {
+            $sql = ('SELECT ' . $selectors . ' FROM ' . $table );
+
+            $this->query = $this->conn->prepare($sql);
+        }
+        // echo $sql;
+        $this->query->execute();
+        $results = $this->query->fetchAll(PDO::FETCH_ASSOC);
+        return $results;
+      } catch (PDOException $e) {
+        $this->logger->log($e->getCode() , $e->getMessage());
       }
-      else
-      {
-          $sql = ('SELECT ' . $selectors . ' FROM ' . $table );
 
-          $this->query = $this->conn->prepare($sql);
-      }
-      // echo $sql;
-      $this->query->execute();
-      $results = $this->query->fetchAll(PDO::FETCH_ASSOC);
-      return $results;
   }
 
 
 //insert function -> tableName, array of column names,
   public function insert($table, array $columns, array $values)
   {
-    $column = '(' . implode(',', $columns) . ')';
-    $params = $this->prepareValues($values);
-    $sql = ('INSERT INTO ' . $table . ' ' . $column . ' VALUES ' . $params);
-    // echo $sql;
-    // die();
-
-    $this->query = $this->conn->prepare($sql);
-
-    foreach($values as $param => $value)
-    {
-        $this->prepareBind($param,$value);
-    }
-
-    $this->query->execute();
-  }
-
-//updte query
-
-  public function update($table, array $values, array $parameters)
-  {
-      $params = $this->prepareNamedParams($values);
-      $where = $this->prepareNamedParams($parameters);
-
-      $sql = ("UPDATE " . $table . " SET " . $params . " WHERE " . $where);
+    try {
+      $column = '(' . implode(',', $columns) . ')';
+      $params = $this->prepareValues($values);
+      $sql = ('INSERT INTO ' . $table . ' ' . $column . ' VALUES ' . $params);
+      // echo $sql;
+      // die();
 
       $this->query = $this->conn->prepare($sql);
-
-      foreach($parameters as $param => $value)
-      {
-          $this->prepareBind($param,$value);
-      }
 
       foreach($values as $param => $value)
       {
@@ -116,53 +105,111 @@ class DbConnect
       }
 
       $this->query->execute();
+
+    } catch (PDOException $e) {
+      $this->logger->log($e->getCode(), $e->getMessage());
+    }
+
   }
+
+//updte query
+
+  public function update($table, array $values, array $parameters)
+  {
+      try {
+        $params = $this->prepareNamedParams($values);
+        $where = $this->prepareNamedParams($parameters);
+
+        $sql = ("UPDATE " . $table . " SET " . $params . " WHERE " . $where);
+
+        $this->query = $this->conn->prepare($sql);
+
+        foreach($parameters as $param => $value)
+        {
+            $this->prepareBind($param,$value);
+        }
+
+        foreach($values as $param => $value)
+        {
+            $this->prepareBind($param,$value);
+        }
+
+        $this->query->execute();
+      } catch (PDOException $e) {
+        $this->logger->log( $e->getCode(), $e->getMessage() );
+      }
+
+  }
+
+
+
 
 
   protected function prepareNamedParams($wherePhrase)
   {
-    if(empty($wherePhrase))
-    {
-        return false;
+    try {
+      if(empty($wherePhrase))
+      {
+          return false;
+      }
+
+      $params = array();
+      foreach($wherePhrase as $name => $value)
+      {
+          $params[] = $name . ' = :' . $name;
+      }
+      return implode(' AND ',$params);
+    } catch (\Exception $e) {
+      $this->logger->log( $e->getCode(), $e->getMessage() );
     }
 
-    $params = array();
-    foreach($wherePhrase as $name => $value)
-    {
-        $params[] = $name . ' = :' . $name;
-    }
-    return implode(' AND ',$params);
   }
+
+
 
 
   protected function prepareBind($param, $value, $type = null)
   {
-    if (is_null($type)) {
-        switch (true) {
-            case is_int($value):
-                $type = \PDO::PARAM_INT;
-                break;
-            case is_bool($value):
-                $type = \PDO::PARAM_BOOL;
-                break;
-            case is_null($value):
-                $type = \PDO::PARAM_NULL;
-                break;
-            default:
-                $type = \PDO::PARAM_STR;
-        }
+    try {
+      if (is_null($type)) {
+          switch (true) {
+              case is_int($value):
+                  $type = \PDO::PARAM_INT;
+                  break;
+              case is_bool($value):
+                  $type = \PDO::PARAM_BOOL;
+                  break;
+              case is_null($value):
+                  $type = \PDO::PARAM_NULL;
+                  break;
+              default:
+                  $type = \PDO::PARAM_STR;
+          }
+      }
+      $this->query->bindValue($param, $value, $type);
+
+    } catch (\Exception $e) {
+      $this->logger->log( $e->getCode(), $e->getMessage() );
     }
-    $this->query->bindValue($param, $value, $type);
+
   }
 
+
+
+//used in the insert command for the sql
   protected function prepareValues($values)
   {
-    $params = array();
-    foreach($values as $key => $value)
-    {
-        $params[] = ':' . $key;
+    try {
+      $params = array();
+      foreach($values as $key => $value)
+      {
+          $params[] = ':' . $key;
+      }
+      return '(' . implode(',',$params) . ')';
+    } catch (\Exception $e) {
+      $this->logger->log( $e->getCode(), $e->getMessage() );
     }
-    return '(' . implode(',',$params) . ')';
+
   }
 
 }
