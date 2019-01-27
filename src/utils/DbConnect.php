@@ -3,11 +3,13 @@
 namespace App\utils;
 use PDO;
 use PDOException;
+use App\utils\DB_Logger;
 class DbConnect
 {
 
   private $conn = null;
   private $query;
+  protected $logger;
 
   public function __construct()
   {
@@ -20,9 +22,10 @@ class DbConnect
 
             $dsn = $config['driver'] . ":host=".$config['server_name'].";dbname=".$config['db_name'];
             $this->conn = new PDO( $dsn, $config['user'], $config['pass'], $options);
+            $this->logger = new DB_Logger();
       }
       } catch(PDOException $e) {
-        // $this->logger->log($e->getCode() , $e->getMessage());
+        $this->logger->log($e->getCode() , $e->getMessage());
       }
  }
 
