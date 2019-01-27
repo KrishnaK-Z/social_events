@@ -39,6 +39,9 @@ class DbConnect
   public function hardCodeSelect($sql)
   {
     try {
+      if( !$this->conn->prepare($sql) ){
+        throw new \Exception(1,"Error Processing Request");
+      }
       $this->query = $this->conn->prepare($sql);
       $this->query->execute();
       $results = $this->query->fetchAll(PDO::FETCH_ASSOC);
@@ -62,6 +65,9 @@ class DbConnect
         if($where)
         {
             $sql = 'SELECT ' . $selectors . ' FROM ' . $table . ' WHERE ' . $where;
+            if( !$this->conn->prepare($sql) ){
+              throw new PDOException(1,"Error Processing Request");
+            }
             $this->query = $this->conn->prepare($sql);
 
             foreach($wherePhrase as $param => $value)
@@ -94,9 +100,9 @@ class DbConnect
       $column = '(' . implode(',', $columns) . ')';
       $params = $this->prepareValues($values);
       $sql = ('INSERT INTO ' . $table . ' ' . $column . ' VALUES ' . $params);
-      // echo $sql;
-      // die();
-
+      if( !$this->conn->prepare($sql) ){
+        throw new PDOException(1,"Error Processing Request");
+      }
       $this->query = $this->conn->prepare($sql);
 
       foreach($values as $param => $value)
@@ -121,7 +127,10 @@ class DbConnect
         $where = $this->prepareNamedParams($parameters);
 
         $sql = ("UPDATE " . $table . " SET " . $params . " WHERE " . $where);
-
+        if( !$this->conn->prepare($sql) )
+        {
+          throw new PDOException(1, "Error Processing Request");
+        }
         $this->query = $this->conn->prepare($sql);
 
         foreach($parameters as $param => $value)
