@@ -101,3 +101,44 @@ if the count from the suggested table is greater than the notification table -- 
 //if the suggestoin notification button is clicked
 update the notification suggestion count table by the number of count in the suggested table with
   references to the suggested_to user
+
+
+
+$.ajax({
+  type: 'POST',
+  url: 'AJAX URL',
+  data: "YOUR DATA"
+  success: function(data){
+   window.location = "http://www.yoururl.com";
+  },
+  error: function(xhr, type, exception) { 
+    // if ajax fails display error alert
+    alert("ajax error response type "+type);
+  }
+});
+
+
+<input id="btnGetResponse" type="button" value="Redirect" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+$(function () {
+    $("#btnGetResponse").click(function () {
+        $.ajax({
+            type: "POST",
+            url: "Default.aspx/GetResponse",
+            data: '{}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+               if (response.d == true) {
+                    alert("You will now be redirected.");
+                    window.location = "//www.aspsnippets.com/";
+                }
+            },
+            failure: function (response) {
+                alert(response.d);
+            }
+        });
+    });
+});
+</script>
