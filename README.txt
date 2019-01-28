@@ -146,3 +146,6 @@ $(function () {
 
 
 https://www.codementor.io/geggleto/slim-3-controllers-and-actions-cwztvuhg8
+
+
+https://stackoverflow.com/questions/36845725/dependency-injection-slim-framework-3
