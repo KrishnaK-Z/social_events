@@ -142,3 +142,7 @@ $(function () {
     });
 });
 </script>
+
+
+
+https://www.codementor.io/geggleto/slim-3-controllers-and-actions-cwztvuhg8
