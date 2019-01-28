@@ -57,9 +57,13 @@ $app->put('/notification/suggestions/seen', SuggestedList::class . ':updateSugge
 $app->put('/notification/events/seen', SuggestedList::class . ':updateNewEventsNotfy');
 
 //rating the event by the particular reviews
-$app->put('/review/{userId}/event/{eventId}/rate', Reviews::class, ':reviewEvent');
+$app->put('/review/{userId}/event/{eventId}/rate', Reviews::class . ':reviewEvent');
 
 //show reviews by all users for a review
-$app->get('/review/{userId}', Reviews::class, ':reviewsByUser');
+$app->get('/reviews', Reviews::class . ':reviewsByUser');
+
+$app->get('/reviews/{eventId}', Reviews::class . ':reviewsForEvent');
+
+$app->get('/reviews/users/{userId}/events/{eventId}' . Reviews::class, .':reviewByuserForEvent');
 
 ?>

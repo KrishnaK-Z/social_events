@@ -28,6 +28,7 @@ The idea with DAO is to ‘provide some specific data operations without exposin
 
 
 Default parameter in the function
+
 Creating a default parameter in a function is very simple and is quite like normal variable assignment. The following function has a single parameter that is set to 1 if it is not passed when calling the function.
 
 function testFunction($a = 1)
@@ -58,6 +59,8 @@ username = 'kkroot'
 password = 'veronica007KK!@#$%'
 charset = 'utf8'
 collation = 'utf8_unicode_ci'
+
+
 
 
 
@@ -150,3 +153,5 @@ update the notification suggestion count table by the number of count in the sug
 
 
   https://stackoverflow.com/questions/36845725/dependency-injection-slim-framework-3
+
+  throwanble and exception

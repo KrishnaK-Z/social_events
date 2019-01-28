@@ -34,7 +34,6 @@ class RegisterDelegate
 
     $userObject = $this->getUserObject($datas);
 
-    //contains query of the userTable
     $roleDao = new RoleDao();
     $roleId = $roleDao->getRoleId( $userObject->getRoleType() );
     $userObject->setRoleId($roleId[0]['roles_id']);
@@ -44,7 +43,7 @@ class RegisterDelegate
     //check for the exsistence of the user by user email
     if( !$usersDao->getUserByEmail( $userObject->getUserEmail() ) )
     {
-      //check error in the uploaded pic files
+      // check error in the uploaded pic files
       // if( ($userObject->getProfilePics())->getError() === UPLOAD_ERR_OK ){
       //   //get the location of the file
       //   $directory = "../../views/profile_pics";

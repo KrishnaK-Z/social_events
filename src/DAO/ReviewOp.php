@@ -15,6 +15,30 @@ class ReviewOp extends DbConnect
     parent::insert( $this->tableName, $columns, $values );
   }
 
+  public function selectAllReviewsByUser( $userId )
+  {
+    $selector = "*";
+    $wherePhrase = array( "review_by"=> $userId );
+    $results = parent::selectBy($this->tableName, $wherePhrase, $selector);
+    return $results;
+  }
+
+  public function selectAllReviewsForEvent( $eventId )
+  {
+    $selector = "*";
+    $wherePhrase = array( "event_id" => $eventId );
+    $results = parent::selectBy($this->tableName, $wherePhrase, $selector);
+    return $results;
+  }
+
+  public function selectReviewForEventByUser( $userId, $eventId )
+  {
+    $selector = "*";
+    $wherePhrase = array( "user_id"=>$userId, "event_id"=>$eventId );
+    $results = parent::selectBy($this->tableName, $wherePhrase, $selector);
+    return $results;
+  }
+
 }
 
 

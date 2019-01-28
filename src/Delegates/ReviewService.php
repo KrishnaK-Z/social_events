@@ -27,7 +27,7 @@ class ReviewService;
   {
     $eventReview = new EventReview();
     $eventReview->setRating( $datas['Rating'] );
-    $eventReview->setDescription( $datas['Description'] );
+    $eventReview->setDescripti$_SESSIONon( $datas['Description'] );
     return $eventReview;
   }
 
@@ -47,8 +47,38 @@ class ReviewService;
 
   public function getReviewsByUser()
   {
-    
+    $var = 1;
+    $userObject = $this->getUserObject( $var );
+    // $userObject = $this->getUserObject( $_SESSION['userId'] );
+
+    $reviewOp = new ReviewOp();
+    $results = $reviewOp->selectAllReviewsByUser( $userObject->getUserId() );
+    return $results;
+
   }
+
+  public function getReviewsForEvent( $args )
+  {
+    $eventObject = $this->getEventObject( $args );
+
+    $reviewOp = new ReviewOp();
+    $results = $reviewOp->selectAllReviewsForEvent( $eventObject->getEventId() );
+    return $results;
+  }
+
+  public function getReviewsByUserForEvent( $args )
+  {
+    $eventObject = $this->getEventObject( $args );
+    $userObject = $this->getUserObject( $_SESSION['userId'] );
+    // $userObject = $this->getUserObject( $_SESSION['userId'] );
+
+    $reviewOp = new ReviewOp();
+    $results = $reviewOp->selectAllReviewsByUserForEvent( $userObject->getUserId(),
+                                                          $eventObject->getEventId() );
+    return $results;
+  }
+
+
 
 
 }
