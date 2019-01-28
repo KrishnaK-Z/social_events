@@ -3,6 +3,7 @@
 use App\controllers\RegisterLoginCtrl;
 use App\controllers\EventsCtrl;
 use App\controllers\SuggestedList;
+use App\controllers\Reviews;
 
 //done
 $app->group('/register',function(){
@@ -54,5 +55,11 @@ $app->put('/notification/suggestions/seen', SuggestedList::class . ':updateSugge
 //updating the old seen event count with new came events
 //done
 $app->put('/notification/events/seen', SuggestedList::class . ':updateNewEventsNotfy');
+
+//rating the event by the particular reviews
+$app->put('/review/{userId}/event/{eventId}/rate', Reviews::class, ':reviewEvent');
+
+//show reviews by all users for a review
+$app->get('/review/{userId}', Reviews::class, ':reviewsByUser');
 
 ?>

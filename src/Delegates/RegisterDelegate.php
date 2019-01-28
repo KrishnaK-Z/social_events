@@ -68,10 +68,6 @@ class RegisterDelegate
       if( ( ($userObject->getRoleId()) == 1) || ( ($userObject->getRoleId()) == 3) )
       {
           $usersDao->insertForUsers( $userObject->getUserName(), $userObject->getUserEmail(), $userObject->getUserPassword(), $fileLocation, $userObject->getPhoneNumber(), $userObject->getRoleId(),  $userObject->getAddressId() );
-
-          //work need to be done
-          // $suggestionsNotification = new SuggestionsNotification();
-          // $suggestionsNotification->initializeSuggNotification(  );
       }
       //if organisation enter name, email, password, fileLocation, phoneNumber, roleId, addressId
       else if( $roleId == 2 )
