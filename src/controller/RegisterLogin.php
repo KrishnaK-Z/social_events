@@ -26,7 +26,7 @@ class RegisterLogin extends BaseController
     $datas = $request->getParsedBody();
     $this->c->logger->info("Login request for the userEmail " . " " . json_encode($datas) );
     $loginResponse = $login->loginUser($datas);
-    // echo $_SESSION['user_id'];
+    // echo $_SESSION['userId'];
     return $resposne->$loginResponse;
   }
 

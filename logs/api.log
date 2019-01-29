@@ -7,3 +7,9 @@
 [2019-01-27 12:37:28] EventManagement.INFO:  from the appache 2  [] {"uid":"2fd5649"}
 [2019-01-27 12:37:45] EventManagement.INFO:  from the appache 2  [] {"uid":"e6b551c"}
 [2019-01-27 12:38:36] EventManagement.INFO:  from the appache 2  [] {"uid":"5b6a50e"}
+[2019-01-29 15:53:18] EventManagement.INFO: Login request for the userEmail  {"userEmail":"krishna@gmail.com","password":"veronica"} [] {"uid":"c61ade3"}
+[2019-01-29 16:28:04] EventManagement.INFO: Login request for the userEmail  {"userEmail":"krishna@gmail.com","password":"veronica"} [] {"uid":"3ec8cab"}
+[2019-01-29 16:28:19] EventManagement.INFO: Login request for the userEmail  {"userEmail":"krishna@gmail.com","password":"veronica"} [] {"uid":"7ca24f1"}
+[2019-01-29 16:29:34] EventManagement.INFO: Login request for the userEmail  {"userEmail":"krishna@gmail.com","password":"veronica"} [] {"uid":"e03f8c5"}
+[2019-01-29 16:29:49] EventManagement.INFO: Login request for the userEmail  {"userEmail":"krishna@gmail.com","password":"veronica"} [] {"uid":"41b8865"}
+[2019-01-29 16:30:16] EventManagement.INFO: Login request for the userEmail  {"userEmail":"mouly@gmail.com","password":"mouly"} [] {"uid":"860c461"}

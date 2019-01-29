@@ -27,7 +27,7 @@
 </nav>
 
 
-<form method="POST" action="http://localhost/social_events/public/login" enctype="multipart/form-data" class="grid" id="loginform">
+<form method="POST" action="http://localhost/social_events/public/home/signin" enctype="multipart/form-data" class="grid" id="loginform">
 
 
 <div class="grid_item full_part">

@@ -3,6 +3,7 @@
 namespace App\delegate;
 
 use App\model\Users as UsersModel;
+use App\model\Roles as RolesModel;
 use App\DAO\UsersDao;
 use App\DAO\RoleDao;
 
@@ -17,19 +18,25 @@ class Login
     return $usersModel;
   }
 
+  public function getRolesObject(){
+    $rolesModel = new RolesModel();
+    return $rolesModel;
+  }
+
   public function loginUser( $datas )
   {
     $userObject = $this->getUserObject( $datas );
+    $rolesObject = $this->getRolesObject();
+
 
     $usersDao = new UsersDao();
     $userObject->setUserId( $usersDao->getUserByEmailPass( $userObject->getUserEmail(), $userObject->getUserPassword() )[0]['user_id'] );
-    $userObject->setRoleId( $usersDao->getUserByEmailPass( $userObject->getUserEmail(), $userObject->getUserPassword() )[0]['role_id'] );
+    $rolesObject->setRoleId( $usersDao->getUserByEmailPass( $userObject->getUserEmail(), $userObject->getUserPassword() )[0]['role_id'] );
 
     if( $userObject->getUserId() ){
       session_start();
       $_SESSION['userId'] = $userObject->getUserId();
-      $_SESSION['userRoleId'] = $userObject->getRoleId();
-      // return $_SESSION['userId'];
+      $_SESSION['userRoleId'] = $rolesObject->getRoleId();
       return 1;
     }
     else {
