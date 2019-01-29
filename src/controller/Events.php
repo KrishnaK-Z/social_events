@@ -1,11 +1,11 @@
 <?php
-namespace App\controllers;
+namespace App\controller;
+
 use App\delegate\Events as EventsDelegate;
-use App\delegate\EventsDelegates;
 use App\delegate\ParticipateEvent;
 use App\delegate\Suggestion;
 
-class EventsCtrl extends BaseController
+class Events extends BaseController
 {
 
 //use add the event they are hosting here

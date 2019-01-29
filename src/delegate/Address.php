@@ -22,16 +22,16 @@ class Address
 
   public function addAddressDetails()
   {
-    $addressDao->insertAddressDetails( $addressObject->getStreetAddress(),
-                                       $addressObject->getArea(),
-                                       $addressObject->getPincode() );
+    $this->addressDao->insertAddressDetails( $this->addressModel->getStreetAddress(),
+                                       $this->addressModel->getArea(),
+                                       $this->addressModel->getPincode() );
   }
 
   public function getAddressId()
   {
-    return $addressDao->$addressDao->getAddressId( $addressObject->getStreetAddress(),
-                                     $addressObject->getArea(),
-                                     $addressObject->getPincode())[0]['address_id'] ;
+    return $this->addressDao->getAddressId( $this->addressModel->getStreetAddress(),
+                                       $this->addressModel->getArea(),
+                                       $this->addressModel->getPincode())[0]['address_id'] ;
   }
 
 // $addressObject->setAddressId(  );

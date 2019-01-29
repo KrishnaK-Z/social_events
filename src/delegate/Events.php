@@ -36,15 +36,6 @@ class Events
     return $eventCatModel;
   }
 
-  private function getAddressObject( $datas )
-  {
-    $addressModel = new AddressModel();
-    $addressModel->setStreetAddress( $datas['streetAddress'] );
-    $addressModel->setArea( $datas['area'] );
-    $addressModel->setPincode( $datas['pincode'] );
-    return $addressModel;
-  }
-
   //addin the events
   public function addEvents( $datas )
   {
@@ -52,30 +43,27 @@ class Events
     $userObject = $this->getUserObject( $datas );
     $eventObject = $this->getEventObject( $datas );
     $categoryObject = $this->getEventCategoryObject( $datas );
-    $addressObject = $this->getAddressObject( $datas );
 
     $eventsDao = new EventsDao();
 
     $categoryObject->setCategoryId( $eventsDao->getEventCategoryId($categoryObject->getCategoryType())[0]['event_category_id'] );
 
-    $addressDao = new AddressDao();
 
-    if( !$addressDao->getAddressId( $addressObject->getStreetAddress(), $addressObject->getArea(), $addressObject->getPincode()) )
-    {
-      $addressDao->insertAddressDetails( $addressObject->getStreetAddress(), $addressObject->getArea(), $addressObject->getPincode() );
-    }
 
-    $addressObject->setAddressId( $addressDao->getAddressId( $addressObject->getStreetAddress(), $addressObject->getArea(),
-                                                           $addressObject->getPincode())[0]['address_id'] );
+    $address = new Address( $datas );
+
+    if(!$address->getAddressId())
+    $address->addAddressDetails();
+
 
     $eventsDao->insertEventDetails( $eventObject->getEventName(), $categoryObject->getCategoryId(), $userObject->getUserId(),
                                     $eventObject->getEventDate(), $eventObject->getStartTime(), $eventObject->getEndTime(),
-                                    $eventObject->getSpots(), $addressObject->getAddressId());
+                                    $eventObject->getSpots(), $address->getAddressId() );
   }
 
 
 
-//display all the events details 
+//display all the events details
   public function showAllEventsDetails()
   {
     $eventsDao = new EventsDao();
