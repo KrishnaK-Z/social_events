@@ -1,9 +1,10 @@
 <?php
 
 use App\controller\RegisterLogin;
-use App\controller\EventsCtrl;
+use App\controller\Events;
 use App\controller\SuggestedList;
 use App\controller\Reviews;
+use App\controller\Users;
 
 $app->group('/home',function(){
   $this->post('/signup', RegisterLogin::class . ':registerSubmit');
@@ -11,9 +12,11 @@ $app->group('/home',function(){
 });
 
 
-$app->get('/showuser', RegisterLoginCtrl::class . ':showAllUserDetailsCtrl');
+$app->get('/users', Users::class . ':showAllUserDetails');
 
-$app->post('/edit/{userId}', RegisterLoginCtrl::class . ':editUserDetails');
+// $app->get('/users/profile?search=name', Users::class . ':showUserDetails');
+
+$app->put('/edit/{userId}', RegisterLoginCtrl::class . ':editUserDetails');
 
 $app->group('/login',function(){
   $this->get('', RegisterLoginCtrl::class . ':loginHome');

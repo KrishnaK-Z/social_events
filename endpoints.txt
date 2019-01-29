@@ -1,14 +1,14 @@
 1)To register a users
-/home/signup
+/home/signup --
 
 2)To login a user
-/home/signin
+/home/signin  --
 
 3)To show all users
-/users
+/users  --
 
 4)To get users with name
-/users/profile?search=name
+/users/profile?search=name  --
 
 5)To get the user details based on the area
 /users?search=area
