@@ -119,7 +119,7 @@ class DbConnect
   }
 
 //updte query
-
+//setting and the consition
   public function update($table, array $values, array $parameters)
   {
       try {

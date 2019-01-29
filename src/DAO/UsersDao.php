@@ -66,9 +66,9 @@ class UsersDao extends DbConnect
   }
 
 
-  public function editUserDetails()
+  public function editUserDetails( $values, $wherePhrase )
   {
-    
+    parent::update( $this->tableName, $values, $wherePhrase );
   }
 
 

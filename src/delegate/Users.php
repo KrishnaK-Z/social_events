@@ -10,9 +10,11 @@ use App\model\AddressDetails as AddressModel;
 
 class Users
 {
+  public $fileLocation=null;
   public function getUserObject( $datas )
   {
     $usersModel = new UsersModel();
+    $usersModel->setUserId( $_SESSION['userId'] );
     $usersModel->setUserName( $datas['userName'] );
     $usersModel->setUserEmail( $datas['userEmail'] );
     // $usersModel->setUserPassword( $datas['password'] );
@@ -22,14 +24,6 @@ class Users
     return $usersModel;
   }
 
-  public function getAddressObject( $datas )
-  {
-    $addressModel = new AddressModel();
-    $addressModel->setStreetAddress( $datas['streetAddress'] );
-    $addressModel->setArea( $datas['area'] );
-    $addressModel->setPincode( $datas['pincode'] );
-    return $addressModel;
-  }
   //show all the user details
   public function showAllUserDetails()
   {
@@ -41,12 +35,21 @@ class Users
   public function editUserDetails( $datas )
   {
     $userObject = $this->getUserObject( $datas );
-    $addressObject = $this->getAddressObject( $datas )
+
+    $address = new Address( $datas );
+
+    if(!$address->getAddressId())
+    $address->addAddressDetails();
 
     $usersDao = new UsersDao();
-    $usersDao->editUserDetails(  );
+    $usersDao->editUserDetails( array( "user_name"=>$userObject->getUserName(),
+                                       "user_email"=>$userObject->getUserEmail(),
+                                       "password"=>$userObject->getUserPassword(),
+                                       "profile_pic"=>$this->fileLocation,
+                                       "address_id"=>$address->getAddressId()) ,
+                                array( "user_id"=>$userObject->getUserId() ) );
 
-    $addressDao = new AddressDao();
+
     //check for the address exsistence and then change the user details
   }
 

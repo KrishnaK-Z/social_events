@@ -62,12 +62,16 @@ class RegisterDelegate
       //if random user store the name, email, password, fileLocaton, phoneNumber, roleId, addressId
       if( ( ($rolesObject->getRoleId()) == 1) || ( ($rolesObject->getRoleId()) == 3) )
       {
-          $usersDao->insertForUsers( $userObject->getUserName(), $userObject->getUserEmail(), $userObject->getUserPassword(), $fileLocation, $userObject->getPhoneNumber(), $rolesObject->getRoleId(),  $address->getAddressId() );
+          $usersDao->insertForUsers( $userObject->getUserName(), $userObject->getUserEmail(),
+                                     $userObject->getUserPassword(), $this->fileLocation, $userObject->getPhoneNumber(),
+                                     $rolesObject->getRoleId(),  $address->getAddressId() );
       }
       //if organisation enter name, email, password, fileLocation, phoneNumber, roleId, addressId
       else if( $rolesObject->getRoleId() == 2 )
       {
-          $usersDao->insertForOrg( $userObject->getUserName(), $userObject->getUserEmail(), $userObject->getUserPassword(), $userObject->getProfilePics(), $userObject->getPhoneNumber(), $userObject->getOrganisationWebsite(),  $rolesObject->getRoleId() );
+          $usersDao->insertForOrg( $userObject->getUserName(), $userObject->getUserEmail(), $userObject->getUserPassword(),
+                                   $userObject->getProfilePics(), $userObject->getPhoneNumber(),
+                                   $userObject->getOrganisationWebsite(),  $rolesObject->getRoleId() );
       }
       else {
         return 0;//false
