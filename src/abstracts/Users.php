@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Interphase;
+namespace App\abstracts;
 
 
-interface UsersInterface
+interface Users
 {
 
   public function setUserId($user_id);

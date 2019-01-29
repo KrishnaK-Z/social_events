@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Interphase;
+namespace App\abstracts;
 
-interface AddressInterface
+interface AddressDetails
 {
 
   public function setStreetAddress($street_address);

@@ -1,21 +1,14 @@
 <?php
 
-namespace App\models;
+namespace App\model;
 
-use App\Interphase\AddressInterface;
-use App\Interphase\EventsInterface;
+use App\abstracts\Events as EventsAbs;
 
-class EventsModel implements EventsInterface, AddressInterface
+class Events implements EventsAbs
 {
 
-  public $streetAddress;
-  public $area;
-  public $pincode;
   public $eventId;
   public $eventName;
-  public $coordinatorId;
-  public $categoryType;
-  public $categoryId;
   public $eventDate;
   public $startTime;
   public $endTime;

@@ -1,12 +1,10 @@
 <?php
 
-namespace App\Interphase;
+namespace App\abstracts;
 
-/**
- *
- */
-interface EventsInterface
+interface Events
 {
+  
   public function getEventId();
 
   public function setEventId($eventId);
@@ -14,14 +12,6 @@ interface EventsInterface
   public function getEventName();
 
   public function setEventName($eventName);
-
-  public function getCategoryType();
-
-  public function setCategoryType($categoryType);
-
-  public function getCategoryId();
-
-  public function setCategoryId($categoryId);
 
   public function getEventDate();
 

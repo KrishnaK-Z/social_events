@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Interphase;
+namespace App\abstracts;
 
-interface EventReviewI
+interface EventReview
 {
   public function setErId( $erId );
 

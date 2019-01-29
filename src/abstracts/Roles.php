@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Interphase;
+namespace App\abstracts;
 
-interface RolesTypeInterface
+interface Roles
 {
 
   public function setRoleId($role_id);
