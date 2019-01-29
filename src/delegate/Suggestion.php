@@ -128,7 +128,6 @@ class Suggestion
     $user = 1;
     $userObject = $this->getSuggestedTo($user);
     // $userId = $this->getSuggestedBy( $_SESSION['userId'] );
-    // die();
     $eventsDao = new EventsDao();
     $suggestionsNotification = new SuggestionsNotification();
     $suggestionsNotification->updateCurrentCount( array( 'event_count' => $eventsDao->getTotalEventsList()[0]['events_count'] ) ,

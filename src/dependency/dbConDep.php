@@ -1,5 +1,5 @@
 <?php
-
+///sample not usesd any where
 $container['db'] = function ($container) {
   try{
     $dbh = $container->get('settings')['db'];
