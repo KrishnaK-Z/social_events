@@ -1,0 +1,67 @@
+1)To register a users
+/home/signup
+
+2)To login a user
+/home/signin
+
+3)To show all users
+/users
+
+4)To get users with name
+/users/profile?search=name
+
+5)To get the user details based on the area
+/users?search=area
+
+6)To edit user details
+/users/profile/change
+
+7)To show all events
+/events
+
+8)To add events
+/events/registration
+
+9)To suggest a event to a friend
+/events/{eventId}/users/{suggestedTo}
+
+10)To participate in a events
+/events/{eventIs}/users/participation
+
+11)To show the users if any new events added to the database based on
+   their previous visit to the site
+/users/events/notification
+
+12)To show the users if any new suggestions came based on
+   their previous visit to the site
+/users/suggestions/notification
+
+13)To see all the events the user participated
+/users/events/participation?id=userId
+
+14)To add a rating to a events
+/events/{eventId}/rate
+
+15)To view rating of particular events
+/events/rates?event=eventId
+
+16)To view all ratings by a particular user
+/events/rates?user=userId
+
+//not yet finished
+17)To add a event to users favourite
+/events/{eventId}/users/favourites
+
+18)To show all the users favourite event
+/users/events/favourites
+
+19)To search for a particular event in favourites
+/users/events/favourite?event=eventName
+
+20)To search based on a date
+/events?hostingdate=date
+
+21)To see all events hosted by a particular users
+/users/events/hosts
+
+22)To delete the event by the hosting users
