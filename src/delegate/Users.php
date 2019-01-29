@@ -1,16 +1,23 @@
 <?php
 
-namespace App\Delegates;
+namespace App\delegate;
 use App\DAO\UsersDao;
 
-class AllUsersDelegate
+class Users
 {
 
+  //show all the user details
   public function showAllUserDetails()
   {
     $usersDao = new UsersDao();
     return $usersDao->showAllUserDetails();
   }
+
+//edit the user detailss
+  // public function editUserDetails($datas, $args)
+  // {
+  //
+  // }
 
 }
 

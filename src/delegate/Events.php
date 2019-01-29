@@ -45,7 +45,7 @@ class Events
     return $addressModel;
   }
 
-
+  //addin the events
   public function addEvents( $datas )
   {
 
@@ -72,6 +72,17 @@ class Events
                                     $eventObject->getEventDate(), $eventObject->getStartTime(), $eventObject->getEndTime(),
                                     $eventObject->getSpots(), $addressObject->getAddressId());
   }
+
+
+
+//display all the events details 
+  public function showAllEventsDetails()
+  {
+    $eventsDao = new EventsDao();
+    return $eventsDao->showAllEventsDetails();
+  }
+
+
 
 }
  ?>

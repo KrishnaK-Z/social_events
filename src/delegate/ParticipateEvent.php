@@ -1,34 +1,38 @@
 <?php
 
- namespace App\Delegates;
- use App\models\UserDetailsModel;
- use App\models\EventsModel;
+ namespace App\delegate;
+
+ use App\model\Users as UsersModel;
+ use App\model\Events as EventsModel;
+ use App\model\EventCategory as EventCatModel;
+ use App\model\AddressDetails as AddressModel;
+
  use App\DAO\UsersDao;
  use App\DAO\EventsDao;
  use App\DAO\EventsParticipation;
 
 
- class participateEvent
+ class ParticipateEvent
  {
-   public function getUserObject($datas)
+
+   public function getUserObject( $datas )
    {
-     $userDetailsModel = new UserDetailsModel();
-     $userDetailsModel->setUserId($datas['userId']);
-     return $userDetailsModel;
+     $usersModel = new UsersModel();
+     $usersModel->setUserId($datas['userId']);
+     return $usersModel;
    }
 
-   public function getEventObject($datas)
+   public function getEventObject( $datas )
    {
      $eventsModel = new EventsModel;
      $eventsModel->setEventId($datas['eventId']);
      return $eventsModel;
    }
 
-   public function participateInEvent($datas)
+   public function participateInEvent( $datas )
    {
-     $eventObject = $this->getEventObject($datas);
-     $userObject = $this->getUserObject($datas);
-
+     $eventObject = $this->getEventObject( $datas );
+     $userObject = $this->getUserObject( $datas );
 
      $eventsDao = new EventsDao();
      //getting the total number of spots from the events table

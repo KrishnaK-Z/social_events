@@ -6,7 +6,7 @@ use App\model\Users as UsersModel;
 use App\DAO\UsersDao;
 use App\DAO\RoleDao;
 
-class LoginDelegate
+class Login
 {
 
   public function getUserObject( $datas )

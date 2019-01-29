@@ -31,7 +31,7 @@ class ReviewOp extends DbConnect
     return $results;
   }
 
-  public function selectReviewForEventByUser( $userId, $eventId )
+  public function selectAllReviewsByUserForEvent( $userId, $eventId )
   {
     $selector = "*";
     $wherePhrase = array( "user_id"=>$userId, "event_id"=>$eventId );

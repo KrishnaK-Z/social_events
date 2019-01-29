@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Delegates;
-use App\models\UserDetailsModel;
-use App\models\EventsModel;
+namespace App\delegate;
+use App\model\Users as UsersModel;
+use App\model\Events as EventsModel;
 use App\DAO\Suggestions;
 use App\DAO\SuggestionsNotification;
 use App\DAO\EventsDao;
@@ -12,16 +12,16 @@ class Suggestion
 
   public function getSuggestedBy($userId)
   {
-    $userDetailsModel = new UserDetailsModel();
-    $userDetailsModel->setUserId($userId);
-    return $userDetailsModel;
+    $usersModel = new UsersModel();
+    $usersModel->setUserId($userId);
+    return $usersModel;
   }
 
   public function getSuggestedTo($data)
   {
-    $userDetailsModel = new UserDetailsModel();
-    $userDetailsModel->setUserId($data);
-    return $userDetailsModel;
+    $usersModel = new UsersModel();
+    $usersModel->setUserId($data);
+    return $usersModel;
   }
 
   public function getSuggestedEvent($data)
@@ -98,7 +98,7 @@ class Suggestion
 
     $eventsDao = new EventsDao();
     $eventTotalCount = $eventsDao->getTotalEventsList()[0]['events_count'];
-  
+
     if( $lastSeenEventsCount < $eventTotalCount )
     {
       return ( $eventTotalCount-$lastSeenEventsCount );

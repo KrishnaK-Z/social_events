@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Delegates;
-use App\models\UserDetailsModel;
-use App\models\EventsModel;
-use App\models\EventReview;
+namespace App\delegate;
+use App\model\Users as UsersModel;
+use App\model\Events as EventsModel;
+use App\model\EventReview as EventReviewModel;
 
-class ReviewService;
+class EventReview;
 {
 
   //object settings
   public function getUserObject( $datas )
   {
-    $userDetailsModel = new UserDetailsModel();
-    $userDetailsModel->setUserId( $datas['userId'] );
-    return $userDetailsModel;
+    $usersModel = new UsersModel();
+    $usersModel->setUserId( $datas['userId'] );
+    return $usersModel;
   }
 
   public function getEventObject( $datas )
@@ -25,10 +25,10 @@ class ReviewService;
 
   public function getEventReview( $datas )
   {
-    $eventReview = new EventReview();
-    $eventReview->setRating( $datas['Rating'] );
-    $eventReview->setDescripti$_SESSIONon( $datas['Description'] );
-    return $eventReview;
+    $eventReviewModel = new EventReviewModel();
+    $eventReviewModel->setRating( $datas['Rating'] );
+    $eventReviewModel->setDescripti$_SESSIONon( $datas['Description'] );
+    return $eventReviewModel;
   }
 
 
@@ -45,6 +45,7 @@ class ReviewService;
 
   }
 
+//select all the reviews by a user
   public function getReviewsByUser()
   {
     $var = 1;
@@ -68,8 +69,9 @@ class ReviewService;
 
   public function getReviewsByUserForEvent( $args )
   {
+    $var = 1;
     $eventObject = $this->getEventObject( $args );
-    $userObject = $this->getUserObject( $_SESSION['userId'] );
+    $userObject = $this->getUserObject( $var );
     // $userObject = $this->getUserObject( $_SESSION['userId'] );
 
     $reviewOp = new ReviewOp();
