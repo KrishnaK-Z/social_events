@@ -1,25 +1,25 @@
 <?php
 
-namespace App\Delegates;
+namespace App\delegate;
 
-use App\models\UserDetailsModel;
+use App\model\Users as UsersModel;
 use App\DAO\UsersDao;
 use App\DAO\RoleDao;
 
 class LoginDelegate
 {
 
-  public function getUserObject($datas)
+  public function getUserObject( $datas )
   {
-    $userDetailsModel = new UserDetailsModel();
-    $userDetailsModel->setUserEmail($datas['userEmail']);
-    $userDetailsModel->setUserPassword($datas['password']);
-    return $userDetailsModel;
+    $usersModel = new UsersModel();
+    $usersModel->setUserEmail( $datas['userEmail'] );
+    $usersModel->setUserPassword( $datas['password'] );
+    return $usersModel;
   }
 
-  public function loginUser($datas)
+  public function loginUser( $datas )
   {
-    $userObject = $this->getUserObject($datas);
+    $userObject = $this->getUserObject( $datas );
 
     $usersDao = new UsersDao();
     $userObject->setUserId( $usersDao->getUserByEmailPass( $userObject->getUserEmail(), $userObject->getUserPassword() )[0]['user_id'] );

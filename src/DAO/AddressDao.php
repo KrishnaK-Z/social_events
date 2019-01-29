@@ -15,10 +15,6 @@ class AddressDao extends dbConnect
       $values = array('street_address' => $streetAddress, 'area' => $area,
                       'pincode' => $pincode);
       parent::insert($this->tableName, $columns, $values);
-      // $stmt = parent::queryPrepare("insert into ". $this->tableName ." (street_address, area, pincode) values (?,?,?)");
-      // $stmt->bind_param("sss",$streetAddress, $area, $pincode);
-      // $stmt->execute();
-      // $stmt->close();
   }
 
 
@@ -30,10 +26,6 @@ class AddressDao extends dbConnect
                     'pincode' => $pincode);
     $results = parent::selectBy($this->tableName, $wherePhrase, $selector);
     return $results;
-      // $stmt = parent::queryPrepare("select address_id from ". $this->tableName ." where street_address = ? and area = ? and pincode = ?");
-      // $stmt->bind_param("sss",$streetAddress, $area, $pincode);
-      // $stmt->execute();
-      // return parent::getResults($stmt);
   }
 
 
