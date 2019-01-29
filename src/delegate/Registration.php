@@ -2,11 +2,10 @@
 
 namespace App\delegate;
 use App\model\Users as UsersModel;
-use App\model\AddressDetails as AddressModel;
 use App\model\Roles as RolesModel;
+use App\delegate\Address;
 use App\DAO\UsersDao;
 use App\DAO\RoleDao;
-use App\DAO\AddressDao;
 use App\DAO\SuggestionsNotification;
 
 class RegisterDelegate
@@ -24,15 +23,6 @@ class RegisterDelegate
     return $usersModel;
   }
 
-  public function getAddressObject( $datas )
-  {
-    $addressModel = new AddressModel();
-    $addressModel->setStreetAddress( $datas['streetAddress'] );
-    $addressModel->setArea( $datas['area'] );
-    $addressModel->setPincode( $datas['pincode'] );
-    return $addressModel;
-  }
-
   public function getRolesObject( $datas )
   {
     $rolesModel = new RolesModel();
@@ -41,15 +31,12 @@ class RegisterDelegate
   }
 
 
-
-
   public function registerUser( $datas )
   {
     // var_dump($datas);
     $fileLocation = null;//location of the profile picture
 
     $userObject = $this->getUserObject( $datas );
-    $addressObject = $this->getAddressObject( $datas )
     $rolesObject = $this->getRolesObject( $datas );
 
     $roleDao = new RoleDao();
@@ -67,24 +54,15 @@ class RegisterDelegate
       //   $directory = "../../views/profile_pics";
       //   $fileLocation = "./profile_pics/" . $this->moveUploadedFile($directory, $userObject->getProfilePics());
       // }
+      $address = new Address( $datas );
 
-      //contains query of the Address Details Table
-      $addressDao = new AddressDao();
-      //check the exsistence of the address in the address table
-      if( !$addressDao->getAddressId( $addressObject->getStreetAddress(), $addressObject->getArea(), $addressObject->getPincode() ) )
-      {
-        //insert address details
-        $addressDao->insertAddressDetails( $addressObject->getStreetAddress(), $addressObject->getArea(), $addressObject->getPincode() );
-      }
-
-      //get the address id
-
-      $addressObject->setAddressId( $addressDao->getAddressId( $addressObject->getStreetAddress(), $addressObject->getArea(), $addressObject->getPincode())[0]['address_id'] );
+      if(!$address->getAddressId())
+      $address->addAddressDetails();
 
       //if random user store the name, email, password, fileLocaton, phoneNumber, roleId, addressId
       if( ( ($rolesObject->getRoleId()) == 1) || ( ($rolesObject->getRoleId()) == 3) )
       {
-          $usersDao->insertForUsers( $userObject->getUserName(), $userObject->getUserEmail(), $userObject->getUserPassword(), $fileLocation, $userObject->getPhoneNumber(), $rolesObject->getRoleId(),  $addressObject->getAddressId() );
+          $usersDao->insertForUsers( $userObject->getUserName(), $userObject->getUserEmail(), $userObject->getUserPassword(), $fileLocation, $userObject->getPhoneNumber(), $rolesObject->getRoleId(),  $address->getAddressId() );
       }
       //if organisation enter name, email, password, fileLocation, phoneNumber, roleId, addressId
       else if( $rolesObject->getRoleId() == 2 )

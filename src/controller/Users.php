@@ -5,7 +5,6 @@ use App\delegate\Users as UsersDelegate;
 
 class Users
 {
-
   //Show All User Details
   public function showAllUserDetailsCtrl ( $request,  $response, $args) {
     $usersDelegate = new UsersDelegate();
@@ -16,13 +15,13 @@ class Users
 
 
   // work need to be done
-    public function editUserDetails( $request, $response, $args )
-    {
-      $usersDelegate = new UsersDelegate();
-      $datas = $request->getParsedBody();
-      $results = $usersDelegate->editUserDetails( $datas );
-      return $response->withJson( $results );
-    }
+  public function editUserDetails( $request, $response, $args )
+  {
+    $usersDelegate = new UsersDelegate();
+    $datas = $request->getParsedBody();
+    $results = $usersDelegate->editUserDetails( $datas );
+    return $response->withJson( $results );
+  }
 
 }
 

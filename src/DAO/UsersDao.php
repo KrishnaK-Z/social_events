@@ -66,6 +66,12 @@ class UsersDao extends DbConnect
   }
 
 
+  public function editUserDetails()
+  {
+    
+  }
+
+
 }
 
 
