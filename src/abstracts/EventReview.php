@@ -4,9 +4,9 @@ namespace App\abstracts;
 
 interface EventReview
 {
-  public function setErId( $erId );
+  public function setEventReviewId( $eventReviewId );
 
-  public function getErId();
+  public function getEventReviewId();
 
   public function setRating( $rating );
 

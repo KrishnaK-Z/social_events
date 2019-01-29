@@ -1,22 +1,20 @@
 <?php
 
-use App\models;
+use App\model;
 
-use App\Interphase\EventReviewI;
+use App\abstracts\EventReview as EventReviewAbs;
 
-class EventReview implements EventReviewI
+class EventReview implements EventReviewAbs
 {
   public $rating;
-
   public $description;
+  public $eventReviewId;
 
-  public $reId;
-
-  public function setErId( $erId ){
-    $this->erId = $erTd;
+  public function setEventReviewId( $eventReviewId ){
+    $this->eventReviewId = $eventReviewId;
   }
 
-  public function getErId(){
+  public function getEventReviewId(){
     return $this->erId;
   }
 
