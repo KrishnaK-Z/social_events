@@ -3,7 +3,7 @@
 namespace App\controller;
 use App\delegate\Users as UsersDelegate;
 
-class Users
+class Users extends BaseController
 {
   //Show All User Details
   public function showAllUserDetails( $request,  $response, $args) {

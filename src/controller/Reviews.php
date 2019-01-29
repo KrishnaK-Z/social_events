@@ -4,7 +4,7 @@ namespace App\controllers;
 
 use App\Delegates\ReviewService;
 
-class Reviews
+class Reviews extends BaseController
 {
   public function reviewEvent( $request, $response, $args )
   {

@@ -1,7 +1,7 @@
 <?php
-// use \Psr\Http\Message\ServerRequestInterface as Request;
-// use \Psr\Http\Message\ResponseInterface as Response;
-session_start();
+use \Psr\Http\Message\ServerRequestInterface as Request;
+use \Psr\Http\Message\ResponseInterface as Response;
+// session_start();
 require __DIR__ . '/../vendor/autoload.php';
 use Slim\Http\UploadedFile;
 // use Illuminate\Database\Capsule\Manager as Capsule;
@@ -23,6 +23,13 @@ $app = new \Slim\App([
 
 $container = $app->getContainer();
 
+
+$app->get('/hello/{name}', function (Request $request, Response $response, array $args) {
+    $name = $args['name'];
+    $response->getBody()->write("Hello, $name");
+
+    return $response;
+});
 
 // require __DIR__ . '/../src/dependency/viewDep.php';
 

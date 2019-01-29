@@ -12,10 +12,10 @@ class RegisterLogin extends BaseController
   //Registration Controllers
   public function registerSubmit($request, $response, $args) {
 
-      $registerDelegate = new RegisterDelegate();
+      $registration = new Registration();
       $datas = $request->getParsedBody();
       // $this->c->logger->info("Registeration request for the following data " . " " . json_encode($datas) );
-      $registerResponse = $registerDelegate->registerUser($datas);
+      $registerResponse = $registration->registerUser($datas);
       return $response->withJson($registerResponse);
 
   }

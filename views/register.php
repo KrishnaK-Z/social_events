@@ -12,7 +12,7 @@
 </nav>
 
 
-<form method="POST" action="http://localhost/social_events/public/register" enctype="multipart/form-data" class="grid" id="registerForm">
+<form method="POST" action="http://localhost/social_events/public/home/signup" enctype="multipart/form-data" class="grid" id="registerForm">
 
 <div class="grid_item">
 <div class="input_label">User Name *</div>

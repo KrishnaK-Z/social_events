@@ -6,7 +6,9 @@ use App\controller\SuggestedList;
 use App\controller\Reviews;
 use App\controller\Users;
 
+
 $app->group('/home',function(){
+
   $this->post('/signup', RegisterLogin::class . ':registerSubmit');
   $this->post('/signin', RegisterLogin::class . ':loginSubmit');
 });
@@ -58,6 +60,6 @@ $app->get('/reviews', Reviews::class . ':reviewsByUser');
 
 $app->get('/reviews/{eventId}', Reviews::class . ':reviewsForEvent');
 
-$app->get('/reviews/users/{userId}/events/{eventId}' . Reviews::class, .':reviewByuserForEvent');
+
 
 ?>

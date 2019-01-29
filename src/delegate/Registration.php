@@ -8,7 +8,7 @@ use App\DAO\UsersDao;
 use App\DAO\RoleDao;
 use App\DAO\SuggestionsNotification;
 
-class RegisterDelegate
+class Registration
 {
 
   public function getUserObject( $datas )
