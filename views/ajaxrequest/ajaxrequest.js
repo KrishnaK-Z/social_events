@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	console.log("ji");
+
 	$('#subbtn').click(function(event){
 		event.preventDefault();
 		//.serializeArray() if want to be in array format instead of json
@@ -19,8 +19,8 @@ $(document).ready(function(){
 					 crossDomain: true,
 					 dataType: 'json',
 										}) .done(function (json){
-											// var msg = json_decode(json);
-										 console.log("hi");
+
+										 console.log(json.message);
 										 if(json){
 											 alert("Success")
 
