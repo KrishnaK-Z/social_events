@@ -33,6 +33,7 @@ class Registration
 
   public function registerUser( $datas )
   {
+    $message;
     // var_dump($datas);
     $fileLocation = null;//location of the profile picture
 
@@ -62,25 +63,31 @@ class Registration
       //if random user store the name, email, password, fileLocaton, phoneNumber, roleId, addressId
       if( ( ($rolesObject->getRoleId()) == 1) || ( ($rolesObject->getRoleId()) == 3) )
       {
-          $usersDao->insertForUsers( $userObject->getUserName(), $userObject->getUserEmail(),
+          $message = $usersDao->insertForUsers( $userObject->getUserName(), $userObject->getUserEmail(),
                                      $userObject->getUserPassword(), $this->fileLocation, $userObject->getPhoneNumber(),
                                      $rolesObject->getRoleId(),  $address->getAddressId() );
+          if( !strcmp($message["status"], "Invalid Data") )
+          $message["message"] = "registered failed";
+          else
+          $message["message"] = "registered successfully";
+          return $message;
       }
       //if organisation enter name, email, password, fileLocation, phoneNumber, roleId, addressId
       else if( $rolesObject->getRoleId() == 2 )
       {
-          $usersDao->insertForOrg( $userObject->getUserName(), $userObject->getUserEmail(), $userObject->getUserPassword(),
+          $message = $usersDao->insertForOrg( $userObject->getUserName(), $userObject->getUserEmail(), $userObject->getUserPassword(),
                                    $userObject->getProfilePics(), $userObject->getPhoneNumber(),
                                    $userObject->getOrganisationWebsite(),  $rolesObject->getRoleId() );
+          $message["message"] = "registered successfully";
+          return $message;
       }
       else {
-        return 0;//false
+        return array("message" => "registration failed",);//false
       }
-      return 1;
 
     }
     else {
-      return 0;
+      return array("message" => "Already exsists");
     }
 
 }

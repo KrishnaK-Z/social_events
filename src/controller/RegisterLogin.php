@@ -16,6 +16,7 @@ class RegisterLogin extends BaseController
       $datas = $request->getParsedBody();
       // $this->c->logger->info("Registeration request for the following data " . " " . json_encode($datas) );
       $registerResponse = $registration->registerUser($datas);
+      $registerResponse["messagecode"] = $response->getStatusCode();
       return $response->withJson($registerResponse);
 
   }

@@ -8,7 +8,7 @@
 /users  --
 
 4)To get users with name
-/users/profile?search=name  --
+/users/profile?name=name  --
 
 5)To get the user details based on the area
 /users?search=area

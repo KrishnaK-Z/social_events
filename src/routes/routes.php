@@ -8,7 +8,6 @@ use App\controller\Users;
 
 
 $app->group('/home',function(){
-
   $this->post('/signup', RegisterLogin::class . ':registerSubmit');
   $this->post('/signin', RegisterLogin::class . ':loginSubmit');
 });
@@ -16,16 +15,13 @@ $app->group('/home',function(){
 
 $app->get('/users', Users::class . ':showAllUserDetails');
 
-$app->get('/find?search=name', Users::class . ':showUserDetails');
+$app->get('/find', Users::class . ':showUserDetails');
 //
 // // $app->get('/users/profile?search=name', Users::class . ':showUserDetails');
 //
 // $app->put('/edit/{userId}', RegisterLoginCtrl::class . ':editUserDetails');
 //
-// $app->group('/login',function(){
-//   $this->get('', RegisterLoginCtrl::class . ':loginHome');
-//   $this->post('', RegisterLoginCtrl::class . ':loginSubmit');
-// });
+
 //
 // $app->group('/events',function(){
 //   $this->get('', EventsCtrl::class . ':showAddEventPage');

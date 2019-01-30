@@ -111,9 +111,10 @@ class DbConnect
       }
 
       $this->query->execute();
-
+      return array("status" => "Data is inserted");
     } catch (PDOException $e) {
       $this->logger->log($e->getCode(), $e->getMessage());
+      return array("status" => "Invalid Data");
     }
 
   }

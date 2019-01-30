@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+	console.log("ji");
 	$('#subbtn').click(function(event){
 		event.preventDefault();
 		//.serializeArray() if want to be in array format instead of json
@@ -8,7 +8,6 @@ $(document).ready(function(){
 		 // var data = new FormData($('#registerForm')[0]);
 		$.ajax({
 
-					//url: ,
 					 url: $(form).attr('action'),
 					 data: data,
 					 // contentType: "JSON",
@@ -20,12 +19,14 @@ $(document).ready(function(){
 					 crossDomain: true,
 					 dataType: 'json',
 										}) .done(function (json){
-										 console.log(json)
-										 if(json==1){
+											// var msg = json_decode(json);
+										 console.log("hi");
+										 if(json){
 											 alert("Success")
+
 										 }
 										 else{
-											 alert("Error")
+											 alert("hi")
 										 }
 
 			 }).fail(function(xhr,status,errorThrow){
@@ -58,7 +59,8 @@ $(document).ready(function(){
 										}) .done(function (json){
 										 if(json){
 											 alert("Success")
-											 console.log(json);
+											 // console.log(json);
+											 // window.location("register.php");
 										 }
 										 else{
 											 alert("Error")

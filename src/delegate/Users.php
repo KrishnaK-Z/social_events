@@ -31,6 +31,17 @@ class Users
     return $usersDao->showAllUserDetails();
   }
 
+  public function showAllUsersByName( $name )
+  {
+    $usersDao = new UsersDao();
+    return $usersDao->showAllUsersByName( $name );
+  }
+  public function showAllUsersByArea( $area )
+  {
+    $userDao = new UserDao();
+    return $usersDao->showAllUsersByArea( $area );
+  }
+
 //edit the user detailss
   public function editUserDetails( $datas )
   {

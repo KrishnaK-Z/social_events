@@ -18,6 +18,13 @@ class UsersDao extends DbConnect
     return $results;
   }
 
+  public function showAllUsersByName($name){
+    $selector = "*";
+    $wherePhrase = array('user_name' => $name);
+    $results = parent::selectBy($this->tableName, $wherePhrase, $selector);
+    return $results;
+  }
+
   //get all the users for a particular mail id
   public function getUserByEmail($userEmail)
   {
@@ -51,7 +58,8 @@ class UsersDao extends DbConnect
                     'password' => $password, 'profile_pic' => $fileLocation,
                     'phone_number' => $phoneNumber, 'role_id' => $roleId,
                     'address_id' => $addressId);
-    parent::insert($this->tableName, $columns, $values);
+    $results = parent::insert($this->tableName, $columns, $values);
+    return $results;
   }
 
   public function insertForOrg($userName, $userEmail, $password, $fileLocation, $phonenumber, $organisationWebsite, $roleId)
