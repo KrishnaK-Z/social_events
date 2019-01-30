@@ -48,15 +48,13 @@ $(document).ready(function(){
 
 					 url: $(form).attr('action'),
 					 data: data,
-					 // contentType: "application/json",
-					 // contentType: "JSON",
-					 //no content type while using the seialize
 					 processData: false,
 					 headers: { 'Access-Control-Allow-Origin': '*' },
 					 type: 'POST',
 					 crossDomain: true,
 					 dataType: 'json',
 										}) .done(function (json){
+											console.log(json);
 										 if(json){
 											 alert("Success")
 											 // console.log(json);

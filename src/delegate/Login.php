@@ -37,10 +37,10 @@ class Login
       session_start();
       $_SESSION['userId'] = $userObject->getUserId();
       $_SESSION['userRoleId'] = $rolesObject->getRoleId();
-      return 1;
+      return array("message" => "Login Success");
     }
     else {
-      return 0;
+      return array("message" => "Login Failed");
     }
 
   }

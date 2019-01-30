@@ -25,10 +25,12 @@ class RegisterLogin extends BaseController
   public function loginSubmit ( $request,  $response,  $args) {
     $login = new Login();
     $datas = $request->getParsedBody();
-    $this->c->logger->info("Login request for the userEmail " . " " . json_encode($datas) );
+    // $this->c->logger->info("Login request for the userEmail " . " " . json_encode($datas) );
     $loginResponse = $login->loginUser($datas);
+    $loginResponse["messagecode"] = $response->getStatusCode();
+    $loginResponse["userId"] = $_SESSION['userId'];
     // echo $_SESSION['userId'];
-    return $resposne->$loginResponse;
+    return $response->withJson($loginResponse);
   }
 
 }
