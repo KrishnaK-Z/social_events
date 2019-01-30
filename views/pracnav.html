@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style media="screen">
+      html,
+body {
+ margin: 0;
+ padding: 0;
+}
+
+.nav {
+ background: #222;
+ padding: 0;
+ margin: 0;
+ text-align: center;
+ position:relative;
+}
+
+.nav li {
+ display: inline-block;
+}
+
+.nav li a {
+ display: block;
+ padding: 20px 30px;
+ color: #cfcfcf;
+ text-decoration: none;
+}
+
+.nav li a:hover {
+ background: #333;
+}
+
+.nav li:hover ul {
+  display: block;
+}
+
+.nav ul {
+ display: none;
+ position:absolute;
+ background: #333;
+ padding: 0;
+ min-width: 200px;
+ text-align: left;
+ border: 5px solid #222;
+ border-top: none;
+ margin-left: -5px;
+}
+
+.nav ul li {
+ display: block;
+}
+
+.nav > li:last-child {
+position: relative;
+}
+
+.fa-arrow-circle-down {
+color: white;
+font-size: 5em;
+}
+    </style>
+    <title>Experiments</title>
+  </head>
+  <body>
+    <header>
+          <ul class="nav">
+            <li><a href="#">Link 1</a></li>
+
+            <li>
+            <a href="#">Link 2 <span class="fa fa-arrow-circle-down arrow"></span></a>
+            <ul>
+              <li><a href="#">Sub1</a></li>
+              <li><a href="#">Sub2</a></li>
+              <li><a href="#">Sub3</a></li>
+              <li><a href="#">Sub4</a></li>
+            </ul>
+
+            </li><li>
+            <a href="#">Link 3</a><li>
+            <a href="#">Link 4</a></li>
+
+            <li>
+              <i class=""></i>
+              <a href="#">Link 5 <span class="fa fa-arrow-circle-down arrow"></span></a>
+              <ul>
+                <li><a href="#">Sub1</a></li>
+                <li><a href="#">Sub2</a></li>
+                <li><a href="#">Sub3</a></li>
+                <li><a href="#">Sub4</a></li>
+              </ul>
+           </li>
+          </ul>
+     </header>
+  </body>
+</html>

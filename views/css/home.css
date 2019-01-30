@@ -1,0 +1,103 @@
+*, *::after, *::before{
+  box-sizing: border-box;
+}
+
+body{
+  margin:0;
+  padding:0;
+}
+a{
+  text-decoration: none;
+}
+.page-container{
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  background: orange;
+  transition: all 0.3s ease;
+  padding-left: 280px;
+}
+.side-bar{
+  position: fixed;
+  top:0;
+  left: 0;
+  width: 240px;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #2c3136;
+  box-shadow: 2px 0 32px rgba(0, 0, 0, 0.05);
+  z-index: 9;
+}
+.collapse .side-bar{
+  left: -240px;
+}
+.fa-caret-down{
+  position: absolute;
+  left: 20%;
+  transform: rotateZ(-90deg);
+  transition: all 0.3s ease;
+}
+/* inner list items to display none */
+.menu ul{
+  display: none;
+}
+/* position the checkbox  */
+.menu input[type="checkbox"]{
+  position: absolute;
+  opacity: 0;
+}
+
+.menu label, .menu a{
+  position: relative;
+  display: block;
+  padding: 24px 24px 24px 82px;
+  font-size: 1.9rem;
+  background: #2c3136;
+
+  font-size: 1.6rem;
+  color: #fff;
+}
+.menu label:hover, .menu a:hover{
+  background: #33383e;
+}
+
+.sample{
+  background: #1c1f22;
+}
+
+.menu input[type=checkbox]:checked + label>i{
+  transform: rotateZ(0);
+}
+
+.menu input[type=checkbox]:checked + label + ul{
+  display: block;
+}
+.menu ul a{
+  padding-left: 106px;
+}
+
+
+.header{
+  padding: 19px 32px 20px;
+  background: #303641;
+  border-bottom: 1px solid #343e50;
+}
+.logo{
+  text-align: center;
+  font-family: 'Righteous', cursive;
+  font-size: 2rem;
+  color: #fff;
+}
+.add-event{
+  padding: 5px;
+  width: 80%;
+  height: 35px;
+  margin: 10px 10%;
+  border: none;
+  color: #fff;
+  background: #e4002b;
+  border-radius: 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.main-wrapper{}
