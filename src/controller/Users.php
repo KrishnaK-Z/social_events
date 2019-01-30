@@ -23,6 +23,13 @@ class Users extends BaseController
     return $response->withJson( $results );
   }
 
+  public function showUserDetails( $request, $response, $args )
+  {
+    echo $_GET['search'];
+    // echo $args['search'];
+    die();
+  }
+
 }
 
  ?>

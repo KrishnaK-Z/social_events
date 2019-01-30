@@ -164,3 +164,23 @@ update the notification suggestion count table by the number of count in the sug
 
 
 array("message" => "updated  ")
+
+
+
+
+
+
+{
+"user_id": "1",
+"user_name": "krishna",
+"user_email": "krishna@gmail.com",
+"password": "veronica",
+"profile_pic": "profile_pics/0b90b4eb912d7d67.png",
+"phone_number": "1234567889",
+"organisation_website": null,
+"role_id": "1",
+"address_id": "1",
+"street_address": "123Adres23esdf",
+"area": "chennai",
+"pincode": "123456"
+}

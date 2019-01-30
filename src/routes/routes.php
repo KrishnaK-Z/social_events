@@ -14,7 +14,9 @@ $app->group('/home',function(){
 });
 
 
-// $app->get('/users', Users::class . ':showAllUserDetails');
+$app->get('/users', Users::class . ':showAllUserDetails');
+
+$app->get('/find?search=name', Users::class . ':showUserDetails');
 //
 // // $app->get('/users/profile?search=name', Users::class . ':showUserDetails');
 //
