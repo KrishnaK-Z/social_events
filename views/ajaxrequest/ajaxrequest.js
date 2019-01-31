@@ -23,8 +23,7 @@ $(document).ready(function(){
 										 console.log(json.message);
 										 if(json){
 											 alert("Success")
-											 window.location();
-
+											 // window.location.href= "/social_events/views/login.php";
 										 }
 										 else{
 											 alert("hi")

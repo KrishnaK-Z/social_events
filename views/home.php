@@ -31,23 +31,24 @@
               </ul>
             </li>
 
-            <li class="has-children">
+            <li class="has-children" id="events">
               <input type="checkbox" name="menu-list-2" value="" id="menu-list-2">
 
-              <label for="menu-list-2"><i class="fas fa-caret-down"></i>Menu-1</label>
+              <label for="menu-list-2"><i class="fas fa-caret-down"></i>Events</label>
               <ul>
-                <li><a href="#">List 1</a></li>
-                <li><a href="#">List 2</a></li>
+                <li><a href="#" type="all-events">All Events</a></li>
+                <li><a href="#" type="my-event">My Events</a></li>
+                <li><a href="#" type="suggested-event">Suggestions</a></li>
               </ul>
             </li>
 
             <li class="has-children">
               <input type="checkbox" name="menu-list-3" value="" id="menu-list-3">
 
-              <label for="menu-list-3"><i class="fas fa-caret-down"></i>Menu-1</label>
+              <label for="menu-list-3"><i class="fas fa-caret-down"></i>Profile</label>
               <ul>
-                <li><a href="#">List 1</a></li>
-                <li><a href="#">List 2</a></li>
+                <li><a href="#">My Account</a></li>
+                <li><a href="#">Logout</a></li>
               </ul>
             </li>
 
@@ -104,4 +105,5 @@
       });
       });
   </script>
+  <script type="text/javascript" src="./ajaxrequest/events.js"></script>
 </html>

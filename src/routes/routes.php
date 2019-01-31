@@ -16,6 +16,8 @@ $app->group('/home',function(){
 $app->get('/users', Users::class . ':showAllUserDetails');
 
 $app->get('/find', Users::class . ':showUserDetails');
+
+$app->get('/events', Events::class . ':showAllEventsPage');
 //
 // // $app->get('/users/profile?search=name', Users::class . ':showUserDetails');
 //
