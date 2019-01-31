@@ -62,6 +62,8 @@
             </div>
           </div>
           <div class="grid-wrapper" style="display: flex; padding: 3%;">
+
+            <!-- Event Card Layout -->
             <div class="event-space">
               <div class="hanging-bar">
                 <i class="fas fa-pencil-alt"></i>
@@ -72,7 +74,7 @@
                   <div class="event-card">
 
                       	<div class="shadow"></div>
-                          <img src="https://images.unsplash.com/photo-1539805430028-e3aa3f6c2172?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=688&q=80" alt="" width="100%" height="100%"/>
+                          <img src="https://images.unsplash.com/photo-1539805430028-e3aa3f6c2172?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=688&q=80" alt=""/>
                           <div class="overlay"></div>
                           <button type="join" name="join" id="join">JOIN</button>
                               <div class="details-container">
@@ -80,11 +82,11 @@
                                   <span class="event-name">Event Name</span>
                                   <p><strong>Hosted By</strong><span> Put Chuttney</span></p>
                                   <div class="more-details">
-                                  <strong>Venue</strong>
-                                  <span>123 Street, Area, Ch-34.</span>
-                                  <strong>Timing</strong>
-                                  <span>8:00am to 7:00pm</span>
-                              </div>
+                                      <strong>Venue</strong>
+                                      <span>123 Street, Area, Ch-34.</span>
+                                      <strong>Timing</strong>
+                                      <span>8:00am to 7:00pm</span>
+                                  </div>
                               </div>
                   </div>
               </div>

@@ -72,3 +72,13 @@ function addClass(el, name){
  function removeClass(el, name){
    el.classList.remove();
  }
+
+
+
+ /**
+  * To Set an attribute and value for the element
+  * @params {element / attribute / value}
+  */
+  function setAttr(el, attr, value){
+    el.setAttribute(attr, value);
+  }
