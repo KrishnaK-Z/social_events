@@ -14,7 +14,7 @@ var grid = $(".grid");
            console.log(result);
            var output = " ";
            for(var i in result)
-           {
+           { 
              output += "<div class='grid__item' data-size='1280x1280'>" +
              "<a href='' class='img-wrap'><img src='" + result[i].profile_pic + "' alt='ImageNotLoaded' /></a>" +
              "<div class='description description--grid'>" +

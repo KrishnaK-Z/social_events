@@ -58,7 +58,6 @@ a{
   padding: 24px 24px 24px 82px;
   font-size: 1.9rem;
   background: #2c3136;
-
   font-size: 1.6rem;
   color: #fff;
 }
@@ -162,6 +161,7 @@ a{
     position: relative;
     width:340px;
     height:500px;
+    perspective: 3000px;
     transition: transform 5s;
 }
 
@@ -257,4 +257,32 @@ a{
 	font-size:14px;
 	display:block;
 	margin-bottom:8px;
+}
+/* Hanging bar  */
+.hanging-bar{
+  position: absolute;
+  top:0;
+  right:-16%;
+  width: 15%;
+  height: 50%;
+  background: #fff;
+  z-index: 99;
+  border-radius: 5px;
+  transform: rotateY(90deg);
+  opacity: 0;
+  transition: all 0.3s ease;
+  transform-origin: left;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: 1.3rem;
+}
+.hanging-bar i{
+  margin: 20px 5px;
+  cursor: pointer;
+  color: #e4002b;
+}
+.event-space:hover .hanging-bar{
+  transform: rotateY(0deg);
+  opacity: 1;
 }

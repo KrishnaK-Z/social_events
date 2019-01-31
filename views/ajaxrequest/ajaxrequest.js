@@ -23,6 +23,7 @@ $(document).ready(function(){
 										 console.log(json.message);
 										 if(json){
 											 alert("Success")
+											 window.location();
 
 										 }
 										 else{
