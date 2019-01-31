@@ -12,6 +12,7 @@ $app->group('/home',function(){
   $this->post('/signin', RegisterLogin::class . ':loginSubmit');
 });
 
+$app->put('/users/profile/change', Users::class . ':editUserDetails');
 
 $app->get('/users', Users::class . ':showAllUserDetails');
 

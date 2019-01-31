@@ -14,7 +14,7 @@ class Users
   public function getUserObject( $datas )
   {
     $usersModel = new UsersModel();
-    $usersModel->setUserId( $_SESSION['userId'] );
+    $usersModel->setUserId( 1 );
     $usersModel->setUserName( $datas['userName'] );
     $usersModel->setUserEmail( $datas['userEmail'] );
     // $usersModel->setUserPassword( $datas['password'] );
@@ -51,6 +51,9 @@ class Users
 
     if(!$address->getAddressId())
     $address->addAddressDetails();
+//add try catch
+    
+    die();
 
     $usersDao = new UsersDao();
     $usersDao->editUserDetails( array( "user_name"=>$userObject->getUserName(),
