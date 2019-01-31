@@ -36,9 +36,9 @@
 
               <label for="menu-list-2"><i class="fas fa-caret-down"></i>Events</label>
               <ul>
-                <li><a href="#" type="all-events">All Events</a></li>
-                <li><a href="#" type="my-event">My Events</a></li>
-                <li><a href="#" type="suggested-event">Suggestions</a></li>
+                <li><a href="#" data-type="all-events">All Events</a></li>
+                <li><a href="#" data-type="my-event">My Events</a></li>
+                <li><a href="#" data-type="suggested-event">Suggestions</a></li>
               </ul>
             </li>
 
@@ -105,5 +105,6 @@
       });
       });
   </script>
-  <script type="text/javascript" src="./ajaxrequest/events.js"></script>
+  <script type="text/javascript" src="./js/jsUtils.js"></script>
+  <script type="text/javascript" src="./js/showEvents.js"></script>
 </html>
