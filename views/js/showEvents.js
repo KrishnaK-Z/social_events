@@ -28,7 +28,8 @@ let getInit = {
 }
 
 const eventCard = {
-  eventMain: create('div'),
+  eventspace: create('div'),
+  eventcard: create('div'),
   shadow: create('div'),
   img: create('img'),
   overlay: create('div'),
@@ -49,7 +50,13 @@ const eventCard = {
 log(eventCard);
 
 let constructEventCard = (data) => {
-  
+  addClass(eventCard.shadow, 'shadow');
+  append(eventCard.eventcard, eventCard.shadow);
+  setAttr(eventCard.img, "src", "https://images.unsplash.com/photo-1539805430028-e3aa3f6c2172?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=688&q=80");
+  setAttr(eventCard.img, "width", "100%");
+  setAttr(eventCard.img, "height", "100%");
+  append(eventCard.eventcard, eventCard.img);
+  inner()
 }
 
 elementsType.showAllEvents.addEventListener( 'click',(event) => {
