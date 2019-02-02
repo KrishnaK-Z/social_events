@@ -11,16 +11,17 @@ use App\model\AddressDetails as AddressModel;
 class Users
 {
   public $fileLocation=null;
+
   public function getUserObject( $datas )
   {
     $usersModel = new UsersModel();
-    $usersModel->setUserId( 1 );
+    $usersModel->setUserId( $datas['userId'] );
     $usersModel->setUserName( $datas['userName'] );
     $usersModel->setUserEmail( $datas['userEmail'] );
-    // $usersModel->setUserPassword( $datas['password'] );
+    $usersModel->setUserPassword( $datas['password'] );
     $usersModel->setProfilePics( $datas['profilePic'] );
     $usersModel->setPhoneNumber( $datas['phonenumber'] );
-    $usersModel->setOrganisationWebsite( $datas['organisationWebsite'] );
+    $usersModel->setOrganisationWebsite( $datas['organisation_website'] );
     return $usersModel;
   }
 
@@ -45,23 +46,23 @@ class Users
 //edit the user detailss
   public function editUserDetails( $datas )
   {
+
     $userObject = $this->getUserObject( $datas );
 
     $address = new Address( $datas );
 
+
     if(!$address->getAddressId())
     $address->addAddressDetails();
-//add try catch
-    
-    die();
+
+
+
 
     $usersDao = new UsersDao();
-    $usersDao->editUserDetails( array( "user_name"=>$userObject->getUserName(),
-                                       "user_email"=>$userObject->getUserEmail(),
-                                       "password"=>$userObject->getUserPassword(),
-                                       "profile_pic"=>$this->fileLocation,
-                                       "address_id"=>$address->getAddressId()) ,
-                                array( "user_id"=>$userObject->getUserId() ) );
+    $usersDao->editUserDetails( $userObject->getUserName(), $userObject->getUserEmail(),
+                               $userObject->getUserPassword(), $userObject->getPhoneNumber(),
+                                $userObject->getUserId());
+
 
 
     //check for the address exsistence and then change the user details

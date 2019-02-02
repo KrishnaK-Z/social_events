@@ -67,7 +67,8 @@ class Registration
                                      $userObject->getUserPassword(), $this->fileLocation, $userObject->getPhoneNumber(),
                                      $rolesObject->getRoleId(),  $address->getAddressId() );
           if( !strcmp($message["status"], "Invalid Data") )
-          $message["message"] = "registered failed";
+
+            $message["message"] = "registered failed";
           else
           $message["message"] = "registered successfully";
           return $message;

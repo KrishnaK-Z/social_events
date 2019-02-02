@@ -33,11 +33,10 @@ class Users extends BaseController
     return $response->withJson( $results );
   }
 
-  public function showUserDetails( $request, $response, $args )
-  {
-    echo ($_GET['search']);
-
-  }
+  // public function showUserDetails( $request, $response, $args )
+  // {
+  //   echo ($_GET['search']);
+  // }
 
 }
 

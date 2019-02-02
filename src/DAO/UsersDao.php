@@ -53,6 +53,7 @@ class UsersDao extends DbConnect
 
   public function insertForUsers($userName, $userEmail, $password, $fileLocation, $phoneNumber, $roleId, $addressId)
   {
+
     $columns = array('user_name', 'user_email', 'password', 'profile_pic', 'phone_number', 'role_id', 'address_id');
     $values = array('user_name' => $userName, 'user_email' => $userEmail,
                     'password' => $password, 'profile_pic' => $fileLocation,
@@ -74,8 +75,14 @@ class UsersDao extends DbConnect
   }
 
 
-  public function editUserDetails( $values, $wherePhrase )
+  public function editUserDetails( $userName, $userEmail, $password, $phonenumber, $userId )
   {
+    $values = array( "user_name"=>$userName,
+                     "user_email"=>$userEmail,
+                     "password"=>$password,
+                     "phone_number"=>$phonenumber );
+    $wherePhrase = array( "user_id"=>$userId );
+
     parent::update( $this->tableName, $values, $wherePhrase );
   }
 

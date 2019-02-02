@@ -15,7 +15,7 @@ class Address
   {
     $this->addressModel = new AddressModel();
     $this->addressDao = new AddressDao();
-    $this->addressModel->setStreetAddress( $datas['street_address'] );
+    $this->addressModel->setStreetAddress( $datas['streetAddress'] );
     $this->addressModel->setArea( $datas['area'] );
     $this->addressModel->setPincode( $datas['pincode'] );
   }
@@ -31,7 +31,7 @@ class Address
   {
     return $this->addressDao->getAddressId( $this->addressModel->getStreetAddress(),
                                        $this->addressModel->getArea(),
-                                       $this->addressModel->getPincode())[0]['address_id'] ;
+                                       $this->addressModel->getPincode() )[0]['address_id'] ;
   }
 
 

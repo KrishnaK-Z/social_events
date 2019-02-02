@@ -25,6 +25,7 @@ class AddressDao extends dbConnect
     $wherePhrase = array('street_address' => $streetAddress, 'area' => $area,
                     'pincode' => $pincode);
     $results = parent::selectBy($this->tableName, $wherePhrase, $selector);
+
     return $results;
   }
 
