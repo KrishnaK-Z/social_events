@@ -1,18 +1,20 @@
 <?php
+/**
+ *namespace App\controller;
 
-namespace App\controller;
+ *use \Psr\Http\Message\ServerRequestInterface as Request;
+ *use \Psr\Http\Message\ResponseInterface as Response;
+ *use Interop\Container\ContainerInterface;
 
-use \Psr\Http\Message\ServerRequestInterface as Request;
-use \Psr\Http\Message\ResponseInterface as Response;
-use Interop\Container\ContainerInterface;
+ *abstract class BaseController
+ *{
+ *  protected $c;
 
-abstract class BaseController
-{
-  protected $c;
+ * public function __construct(ContainerInterface $c)
+ * {
+ *   $this->c = $c;
+ * }
+ *}
+ */
 
-  public function __construct(ContainerInterface $c)
-  {
-    $this->c = $c;
-  }
-}
  ?>

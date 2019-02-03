@@ -1,6 +1,6 @@
 <?php
 
-use App\model;
+namespace App\model;
 
 use App\abstracts\EventReview as EventReviewAbs;
 

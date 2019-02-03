@@ -12,27 +12,13 @@
  use App\DAO\EventsParticipation;
 
 
- class ParticipateEvent
+ class ParticipateEvent extends BaseDelegate
  {
-
-   public function getUserObject( $datas )
-   {
-     $usersModel = new UsersModel();
-     $usersModel->setUserId($datas['userId']);
-     return $usersModel;
-   }
-
-   public function getEventObject( $datas )
-   {
-     $eventsModel = new EventsModel;
-     $eventsModel->setEventId($datas['eventId']);
-     return $eventsModel;
-   }
 
    public function participateInEvent( $datas )
    {
-     $eventObject = $this->getEventObject( $datas );
-     $userObject = $this->getUserObject( $datas );
+     $eventObject = $this->helper->getEventObject( $datas );
+     $userObject = $this->helper->getUserObject( $datas );
 
      $eventsDao = new EventsDao();
      //getting the total number of spots from the events table

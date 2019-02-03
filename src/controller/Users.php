@@ -2,15 +2,16 @@
 
 namespace App\controller;
 use App\delegate\Users as UsersDelegate;
+use App\utils\DB_Logger;
 
-class Users extends BaseController
+class Users
 {
 
   private $usersDelegate;
 
   public function __construct(){
-    parent::__construct();
     $this->usersDelegate = new UsersDelegate();
+    $this->logger = new DB_Logger();
   }
   //Show All User Details
   public function showAllUserDetails( $request,  $response, $args) {
@@ -25,7 +26,7 @@ class Users extends BaseController
 
     else
     $results = $this->usersDelegate->showAllUserDetails(); //returns an array
-    // $this->c->logger->info(" from the appache 2 " );
+
     return $response->withJson($results);
   }
 

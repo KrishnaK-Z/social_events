@@ -1,44 +1,24 @@
 <?php
 
 namespace App\delegate;
-use App\model\Users as UsersModel;
-use App\model\Roles as RolesModel;
+
 use App\delegate\Address;
 use App\DAO\UsersDao;
 use App\DAO\RoleDao;
 use App\DAO\SuggestionsNotification;
+use App\delegate\Helper;
 
-class Registration
+class Registration extends BaseDelegate
 {
-
-  public function getUserObject( $datas )
-  {
-    $usersModel = new UsersModel();
-    $usersModel->setUserName( $datas['userName'] );
-    $usersModel->setUserEmail( $datas['userEmail'] );
-    $usersModel->setUserPassword( $datas['password'] );
-    $usersModel->setProfilePics( $datas['profilePic'] );
-    $usersModel->setPhoneNumber( $datas['phonenumber'] );
-    $usersModel->setOrganisationWebsite( $datas['organisationWebsite'] );
-    return $usersModel;
-  }
-
-  public function getRolesObject( $datas )
-  {
-    $rolesModel = new RolesModel();
-    $rolesModel->setRoleType( $datas['roleType'] );
-    return $rolesModel;
-  }
-
 
   public function registerUser( $datas )
   {
     $message;
     // var_dump($datas);
-    $fileLocation = null;//location of the profile picture
+    $fileLocation = null;
 
-    $userObject = $this->getUserObject( $datas );
-    $rolesObject = $this->getRolesObject( $datas );
+    $userObject = $this->helper->getUserObject( $datas );
+    $rolesObject = $this->helper->getRolesObject( $datas );
 
     $roleDao = new RoleDao();
     $roleId = $roleDao->getRoleId( $rolesObject->getRoleType() );

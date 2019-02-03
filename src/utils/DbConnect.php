@@ -17,7 +17,7 @@ class DbConnect
                              PDO::ATTR_EMULATE_PREPARES   => true];
             $dsn = $config['driver'] . ":host=".$config['server_name'].";dbname=".$config['db_name'];
             $this->conn = new PDO( $dsn, $config['user'], $config['pass'], $options);
-            $this->logger = new DB_Logger();
+            $this->logger = new DB_Logger("db");
       }
       } catch(PDOException $e) {
         $this->logger->log($e->getCode() , $e->getMessage());

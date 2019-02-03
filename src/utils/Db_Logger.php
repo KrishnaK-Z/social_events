@@ -10,9 +10,14 @@
  	class DB_Logger {
  		public $logger;
 
- 		function __construct() {
+ 		function __construct( $file="" ) {
  			$this->logger = new Logger('Event_Management_db');
+
+      if( !strcmp($file, "db") )
  			$this->logger->pushHandler(new StreamHandler(__DIR__.'/../../logs/db.log', \Monolog\Logger::DEBUG));
+      else
+      $this->logger->pushHandler(new StreamHandler(__DIR__.'/../../logs/api.log', \Monolog\Logger::DEBUG));
+
  			$timeZone = new DateTimeZone("Asia/Kolkata");
     		$this->logger->setTimeZone($timeZone);
  		}
@@ -25,6 +30,9 @@
  			else if(strcmp($status,"02")==0 || strcmp($status,"42")==0) {
  				$this->logger->critical($errorMessage);
  			}
+      else if( strcmp($statusCode,"info")==0 ){
+        $this->logger->info($errorMessage);
+      }
  			else {
  				$this->logger->error($errorMessage);
  			}

@@ -7,26 +7,13 @@ use App\model\Roles as RolesModel;
 use App\DAO\UsersDao;
 use App\DAO\RoleDao;
 
-class Login
+class Login extends BaseDelegate
 {
-
-  public function getUserObject( $datas )
-  {
-    $usersModel = new UsersModel();
-    $usersModel->setUserEmail( $datas['userEmail'] );
-    $usersModel->setUserPassword( $datas['password'] );
-    return $usersModel;
-  }
-
-  public function getRolesObject(){
-    $rolesModel = new RolesModel();
-    return $rolesModel;
-  }
 
   public function loginUser( $datas )
   {
-    $userObject = $this->getUserObject( $datas );
-    $rolesObject = $this->getRolesObject();
+    $userObject = $this->helper->getUserObject( $datas );
+    $rolesObject = $this->helper->getRolesObject();
 
 
     $usersDao = new UsersDao();

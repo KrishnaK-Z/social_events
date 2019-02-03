@@ -3,15 +3,16 @@
 namespace App\controllers;
 
 use App\Delegates\Suggestion;
+use App\utils\DB_Logger;
 
-class SuggestedList extends BaseController
+class SuggestedList
 {
 
-  private $suggestion;
+  private $suggestion, $logger;
 
   public function __construct(){
-    parent::__construct();
     $this->uggestion = new Suggestion();
+    $this->logger = new DB_Logger();
   }
 
 

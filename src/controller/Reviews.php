@@ -3,16 +3,18 @@
 namespace App\controllers;
 
 use App\Delegates\ReviewService;
+use App\utils\DB_Logger;
 
-class Reviews extends BaseController
+class Reviews
 {
 
 
-  private $reviewService;
+  private $reviewService, $logger;
 
   public function __construct(){
     parent::__construct();
     $this->reviewService = new ReviewService();
+    $this->logger = new DB_Logger();
   }
 
 

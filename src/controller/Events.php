@@ -4,17 +4,18 @@ namespace App\controller;
 use App\delegate\Events as EventsDelegate;
 use App\delegate\ParticipateEvent;
 use App\delegate\Suggestion;
+use App\utils\DB_Logger;
 
-class Events extends BaseController
+class Events
 {
 
-  private $eventsDelegate, $participateEvents, $suggestion;
+  private $eventsDelegate, $participateEvents, $suggestion, $logger;
 
   public function __construct(){
-    parent::__construct();
     $this->eventsDelegate = = new EventsDelegate();
     $this->participateEvents = new ParticipateEvent();
     $this->suggestion = new Suggestion();
+    $this->logger = new DB_Logger();
   }
 
 
@@ -24,7 +25,7 @@ class Events extends BaseController
   {
     $datas = $request->getParsedBody();
     $results = $this->eventsDelegate->addEvents($datas);
-    $this->c->logger->info("New Event Added by " . " " . $_SESSION['userId'] );
+    $this->logger->log("info","New Event Added by " . " " . $_SESSION['userId'] );
     return $response->withJson($results);
   }
 

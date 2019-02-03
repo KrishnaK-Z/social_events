@@ -1,12 +1,5 @@
-[2019-01-26 13:10:18] EventManagement.INFO: New Event Added by  31 [] {"uid":"795ab1c"}
-[2019-01-26 13:44:45] EventManagement.INFO: New Event Added by  31 [] {"uid":"72dadbf"}
-[2019-01-26 13:44:58] EventManagement.INFO: New Event Added by  31 [] {"uid":"6ec7571"}
-[2019-01-26 16:45:46] EventManagement.INFO:  from the appache 2  [] {"uid":"8fa19dc"}
-[2019-01-26 17:21:30] EventManagement.INFO:  from the appache 2  [] {"uid":"7500c12"}
-[2019-01-27 12:22:00] EventManagement.INFO:  from the appache 2  [] {"uid":"e0042b3"}
-[2019-01-27 12:37:28] EventManagement.INFO:  from the appache 2  [] {"uid":"2fd5649"}
-[2019-01-27 12:37:45] EventManagement.INFO:  from the appache 2  [] {"uid":"e6b551c"}
-[2019-01-30 20:38:26] EventManagement.INFO: Login request for the userEmail  {"userEmail":"krishna@gmail.com","password":"veronica"} [] {"uid":"eefb062"}
-[2019-01-30 20:38:29] EventManagement.INFO: Login request for the userEmail  {"userEmail":"krishna@gmail.com","password":"veronica"} [] {"uid":"ad57cd8"}
-[2019-01-30 20:38:35] EventManagement.INFO: Login request for the userEmail  {"userEmail":"krishna@gmail.com","password":"veronica"} [] {"uid":"1be0ca2"}
-[2019-01-30 20:39:32] EventManagement.INFO: Login request for the userEmail  {"userEmail":"krishna@gmail.com","password":"veronica"} [] {"uid":"294d8f3"}
+[2019-02-03 23:01:59] Event_Management_db.INFO: Registeration request for the following data  {"userName":"sds","roleType":"participant","phonenumber":"333","streetAddress":"sd","area":"asd","pincode":"34","userEmail":"assssss@ssd.cd","password":"asd","confpass":""} [] []
+[2019-02-03 23:06:04] Event_Management_db.INFO: Registeration request for the following data  {"userName":"sds","roleType":"participant","phonenumber":"333","streetAddress":"sd","area":"asd","pincode":"34","userEmail":"assssss@ssd.cd","password":"asd","confpass":""} [] []
+[2019-02-03 23:09:47] Event_Management_db.INFO: Registeration request for the following data  {"userName":"sds","roleType":"participant","phonenumber":"333","streetAddress":"sd","area":"asd","pincode":"34","userEmail":"assssss@ssd.cd","password":"asd","confpass":""} [] []
+[2019-02-03 23:10:08] Event_Management_db.INFO: Registeration request for the following data  {"userName":"","roleType":"participant","phonenumber":"","streetAddress":"","area":"","pincode":"","userEmail":"","password":"","confpass":""} [] []
+[2019-02-03 23:14:33] Event_Management_db.INFO: Registeration request for the following data  {"userName":"","roleType":"participant","phonenumber":"","streetAddress":"","area":"","pincode":"","userEmail":"","password":"","confpass":""} [] []
