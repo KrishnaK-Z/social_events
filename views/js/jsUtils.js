@@ -82,3 +82,11 @@ function addClass(el, name){
   function setAttr(el, attr, value){
     el.setAttribute(attr, value);
   }
+
+
+/**
+ * Consloe log function
+ */
+ function log(el){
+   console.log(el);
+ }

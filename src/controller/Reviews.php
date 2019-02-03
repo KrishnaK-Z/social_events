@@ -6,34 +6,45 @@ use App\Delegates\ReviewService;
 
 class Reviews extends BaseController
 {
+
+
+  private $reviewService;
+
+  public function __construct(){
+    parent::__construct();
+    $this->reviewService = new ReviewService();
+  }
+
+
+
   public function reviewEvent( $request, $response, $args )
   {
-    $reviewService = new ReviewService();
     $datas = $request->getParsedBody();
-    //logger
-    $results = $reviewService->addReview( $datas, $args );
+    $results = $this->reviewService->addReview( $datas, $args );
     return $response->withJson($results);
   }
 
+
+
   public function reviewsByUser( $request, $response, $args )
   {
-    $reviewService = new ReviewService();
-    //logger
-    results = $reviewService->getReviewsByUser();
+    results = $this->reviewService->getReviewsByUser();
     return $response->withJson($results);
   }
+
+
+
   public function reviewsForEvent( $request, $response, $args )
   {
-    $reviewService = new ReviewService();
-    //logger
-    results = $reviewService->getReviewsForEvent($args);
+    results = $this->reviewService->getReviewsForEvent($args);
     return $response->withJson($results);
   }
+
+
+
   public function reviewByuserForEvent( $request, $response, $args )
   {
-    $reviewService = new ReviewService();
-    //logger
-    results = $reviewService->getReviewsByUserForEvent($args);
+    results = $this->reviewService->getReviewsByUserForEvent($args);
     return $response->withJson($results);
   }
 

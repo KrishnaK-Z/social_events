@@ -1,9 +1,6 @@
 (function(){
 
 
-let log = (el) => {
-  console.log(el);
-}
 
 let elementsType = {
   showAllEvents: document.querySelectorAll('[data-type = "all-events"]')[0],
@@ -21,55 +18,69 @@ const defHeaders = {
     "Accept": "application/json"
 }
 
-let getInit = {
-  method: "GET",
-  headers: defHeaders,
-  mode: "cors",
-  cacje: "default"
+let settings = {
+  getInit:   {
+    method: "GET",
+    headers: defHeaders,
+    mode: "cors",
+    cache: "default"
+  },
+
+  postInit: (data)=>{
+    return {
+      method: 'POST',
+      headers: defHeaders,
+      mode: "cors",
+      cache: "default",
+      body: data
+    }
+  }
+  
 }
 
-// const eventCard = {
-//   eventspace: create('div'),
-//   eventcard: create('div'),
-//   shadow: create('div'),
-//   img: create('img'),
-//   overlay: create('div'),
-//   join: create('button'),
-//   detCont: create('div'),
-//   spots: create('span'),
-//   eventName: create('span'),
-//   hostedP: create('p'),
-//   hostedBy: create('strong'),
-//   host: create('span'),
-//   moreDet: create('div'),
-//   venue: create('strong'),
-//   street: create('span'),
-//   timeH: create('strong'),
-//   timeD: create('span')
-// }
-//
-// log(eventCard);
-//
-// let constructEventCard = (data) => {
-//   addClass(eventCard.shadow, 'shadow');
-//   append(eventCard.eventcard, eventCard.shadow);
-//   setAttr(eventCard.img, "src", "https://images.unsplash.com/photo-1539805430028-e3aa3f6c2172?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=688&q=80");
-//   setAttr(eventCard.img, "width", "100%");
-//   setAttr(eventCard.img, "height", "100%");
-//   append(eventCard.eventcard, eventCard.img);
-//   inner()
-// }
+
 
 elementsType.showAllEvents.addEventListener( 'click',(event) => {
-
-  fetch( urls.showAllEvents,  getInit)
+  // elementsType.showItemContainers.innerHTML = "";
+  fetch( urls.showAllEvents,  settings.getInit)
   .then( (response) => {
     return response.json();
   } )
-  .then( (data) => {
-    // log(data[2].street_address);
-    for(let i=0; i<data.length; i++)
-    constructEventCard(data[i]);
+  .then( (events) => {
+    log(events);
+    events.forEach( (event) => {
+      let result =
+      `<div class="event-space" data-category="${event.event_category_name}">
+        <div class="hanging-bar">
+          <i class="fas fa-pencil-alt"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-thumbs-up"></i>
+          <i class="fas fa-user-friends"></i>
+        </div>
+            <div class="event-card">
+
+                  <div class="shadow"></div>
+                    <img src="https://images.unsplash.com/photo-1539805430028-e3aa3f6c2172?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=688&q=80" alt=""/>
+                    <div class="overlay"></div>
+                    <button type="join" name="join" id="${event.event_id}">JOIN</button>
+                        <div class="details-container">
+                            <span class="spots">${event.spots}</span>
+                            <span class="event-name">${event.event_name}</span>
+                            <p id="${event.user_id}"><strong>Hosted By</strong><span> ${event.user_name}</span></p>
+                            <div class="more-details">
+                                <strong>Venue</strong>
+                                <span>${event.street_address}, ${event.area}, ${event.pincode}</span>
+                                <strong>Timing</strong>
+                                <span>${event.start_time} to ${event.end_time}pm</span>
+                            </div>
+                        </div>
+            </div>
+        </div>`;
+
+        elementsType.showItemContainers.innerHTML+=result;
+    } );
+
+
   } )
   .catch( (error) => {
     log(error);
@@ -77,7 +88,5 @@ elementsType.showAllEvents.addEventListener( 'click',(event) => {
 
 } );
 
-
-// log();
 
 })();

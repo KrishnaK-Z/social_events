@@ -1,0 +1,140 @@
+/* --------------------------------
+
+Primary style
+
+-------------------------------- */
+*, *::after, *::before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: "Open Sans", sans-serif;
+  color: #2b3e51;
+  background-color: #ffffff;
+}
+
+a {
+  color: #2c97de;
+  text-decoration: none;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* --------------------------------
+
+Form
+
+-------------------------------- */
+.edit-form {
+  width: 90%;
+  max-width: 600px;
+  padding: 30px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  margin: 4em auto;
+}
+.edit-form::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+.edit-form fieldset {
+  margin: 14px 0;
+}
+.edit-form legend {
+  padding-bottom: 10px;
+  font-size: 2rem;
+  border-bottom: 1px solid #ecf0f1;
+}
+.edit-form div {
+  /* form element wrapper */
+  position: relative;
+  margin: 20px 0;
+}
+.edit-form h4, .edit-form .label {
+  font-size: 1.3rem;
+  color: #94aab0;
+  margin-bottom: 10px;
+}
+.edit-form .label {
+  display: block;
+}
+.edit-form input, .edit-form label {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.6rem;
+  color: #2b3e51;
+}
+.edit-form input,
+.edit-form legend {
+  display: block;
+  width: 100%;
+}
+.edit-form input{
+  /* general style for input elements */
+  padding: 12px;
+  border: 1px solid #cfd9db;
+  background-color: #ffffff;
+  border-radius: .25em;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08);
+}
+
+.edit-form input[type="submit"] {
+  /* button style */
+  border: none;
+  background: #2c97de;
+  border-radius: .25em;
+  padding: 16px 20px;
+  color: #ffffff;
+  font-weight: bold;
+  float: right;
+  cursor: pointer;
+}
+.edit-form input[type="submit"]:hover {
+  background: #42a2e1;
+}
+
+.edit-form .info{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.edit-form .message {
+  width: 46%;
+  background: #e94b35;
+  color: #ffffff;
+  font-size: 1.4rem;
+  text-align: center;
+  border-radius: .25em;
+  padding: 16px;
+}
+.edit-form .error {
+  border-color: #e94b35 !important;
+}
+@media only screen and (min-width: 600px) {
+  .edit-form div {
+    /* form element wrapper */
+    margin: 32px 0;
+  }
+  .edit-form legend + div {
+    /* reduce margin-top for first form element after the legend */
+    margin-top: 20px;
+  }
+  .edit-form h4, .edit-form .label {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+  }
+  .edit-form input {
+    padding: 16px;
+  }
+}

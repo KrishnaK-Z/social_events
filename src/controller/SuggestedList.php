@@ -6,33 +6,45 @@ use App\Delegates\Suggestion;
 
 class SuggestedList extends BaseController
 {
+
+  private $suggestion;
+
+  public function __construct(){
+    parent::__construct();
+    $this->uggestion = new Suggestion();
+  }
+
+
+
   public function loadSuggestions( $request, $response, $args )
   {
-    $suggestion = new Suggestion();
-    $results = $suggestion->loadSuggestedList();
+    $results = $this->suggestion->loadSuggestedList();
     return $response->withJson($results);
   }
 
   public function loadNewEvents( $request, $response, $args )
   {
-    $suggestion = new Suggestion();
-    $results = $suggestion->loadEventsList();
+    $results = $this->suggestion->loadEventsList();
     return $response->withJson($results);
   }
+
+
 
   public function updateSuggestions( $request, $response, $args )
   {
-    $suggestion = new Suggestion();
-    $results = $suggestion->updateSuggestNotify();
+    $results = $this->suggestion->updateSuggestNotify();
     return $response->withJson($results);
   }
 
+
+
   public function updateNewEventsNotfy( $request, $response, $args )
   {
-    $suggestion = new Suggestion();
-    $results = $suggestion->updateEventNotfy();
+    $results = $this->suggestion->updateEventNotfy();
     return $response->withJson($results);
   }
+
+
 
 
 }

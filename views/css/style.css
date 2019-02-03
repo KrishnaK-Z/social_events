@@ -2,9 +2,7 @@ body
 {
     margin: 0;
     padding: 0;
-    background: #e5e5e5;
     font-family: 'Raleway', sans-serif;
-    background: linear-gradient(#a8ff78, #78ffd6);
     font-family: "Segoe UI";
 }
 .grid

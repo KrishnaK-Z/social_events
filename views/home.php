@@ -39,6 +39,8 @@
                 <li><a href="#" data-type="all-events">All Events</a></li>
                 <li><a href="#" data-type="my-event">My Events</a></li>
                 <li><a href="#" data-type="suggested-event">Suggestions</a></li>
+                <li><a href="#" data-type="fav-event">Favourites</a></li>
+                <li><a href="#" data-type="recent-event">Recent</a></li>
               </ul>
             </li>
 
@@ -53,15 +55,33 @@
             </li>
 
           </ul>
-          <button type="add-event" name="add-event" class="add-event">Add Event</button>
+          <button type="add-event" name="add-event" class="add-event">Add Event<i class="fas fa-plus"></i></button>
         </div>
         <div class="main-wrapper">
           <div class="top-bar">
+
             <div class="ham-wrapper">
               <div class="ham"></div>
             </div>
+
+            <form class="search" method="post">
+              <input type="text" name="search" placeholder="search...">
+            </form>
+
+            <nav class="right-nav">
+        			<ul class="top-nav">
+        				<li><a href="">Events</a><span type="event-notfy">0</span></li>
+        				<li><a href="">Suggestions</a><span type="event-notfy">0</span></li>
+        				<li class="account">
+        					<a href="">
+        						<!-- <img src="img/cd-avatar.png" alt="avatar"> -->
+        						User Name
+        					</a>
+        				</li>
+        			</ul>
+        		</nav>
           </div>
-          <div class="grid-wrapper" style="display: flex; padding: 3%;">
+          <div class="grid-wrapper">
 
             <!-- Event Card Layout -->
             <div class="event-space">
@@ -71,25 +91,55 @@
                 <i class="fas fa-thumbs-up"></i>
                 <i class="fas fa-user-friends"></i>
               </div>
-                  <div class="event-card">
+              <div class="event-card">
 
-                      	<div class="shadow"></div>
-                          <img src="https://images.unsplash.com/photo-1539805430028-e3aa3f6c2172?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=688&q=80" alt=""/>
-                          <div class="overlay"></div>
-                          <button type="join" name="join" id="join">JOIN</button>
-                              <div class="details-container">
-                                  <span class="spots">23/100</span>
-                                  <span class="event-name">Event Name</span>
-                                  <p><strong>Hosted By</strong><span> Put Chuttney</span></p>
-                                  <div class="more-details">
-                                      <strong>Venue</strong>
-                                      <span>123 Street, Area, Ch-34.</span>
-                                      <strong>Timing</strong>
-                                      <span>8:00am to 7:00pm</span>
-                                  </div>
+                  	<div class="shadow"></div>
+                      <img src="https://images.unsplash.com/photo-1539805430028-e3aa3f6c2172?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=688&q=80" alt=""/>
+                      <div class="overlay"></div>
+                      <button type="join" name="join" id="join">JOIN</button>
+                          <div class="details-container">
+                              <span class="spots">23/100</span>
+                              <span class="event-name">Event Name</span>
+                              <p>Put Chuttney</p>
+                              <div class="more-details">
+                                  <strong>Venue</strong>
+                                  <span>123 Street, Area, Ch-34.</span>
+                                  <strong>Timing</strong>
+                                  <span>8:00am to 7:00pm</span>
                               </div>
-                  </div>
+                          </div>
               </div>
+            </div>
+
+
+
+            <!-- Event Card Layout -->
+            <div class="event-space">
+              <div class="hanging-bar">
+                <i class="fas fa-pencil-alt"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-thumbs-up"></i>
+                <i class="fas fa-user-friends"></i>
+              </div>
+              <div class="event-card">
+
+                    <div class="shadow"></div>
+                      <img src="https://images.unsplash.com/photo-1539805430028-e3aa3f6c2172?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=688&q=80" alt=""/>
+                      <div class="overlay"></div>
+                      <button type="join" name="join" id="join">JOIN</button>
+                          <div class="details-container">
+                              <span class="spots">23/100</span>
+                              <span class="event-name">Event Name</span>
+                              <p>Put Chuttney</p>
+                              <div class="more-details">
+                                  <strong>Venue</strong>
+                                  <span>123 Street, Area, Ch-34.</span>
+                                  <strong>Timing</strong>
+                                  <span>8:00am to 7:00pm</span>
+                              </div>
+                          </div>
+              </div>
+            </div>
 
 
           </div>
@@ -98,15 +148,20 @@
   </body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script type="text/javascript" src="js/home.js"></script>
+
+  <script type="text/javascript" src="./js/jsUtils.js"></script>
+  <script type="text/javascript" src="./js/showEvents.js"></script>
   <script type="text/javascript">
   $(document).ready(function(){
       $('.event-card').hover(function(){
+        console.log("hoer");
           $(this).addClass('animate');
          }, function(){
           $(this).removeClass('animate');
       });
+      $('.ham-wrapper').on('click', function() {
+        $('.page-container').toggleClass('cols');
+        });
       });
   </script>
-  <script type="text/javascript" src="./js/jsUtils.js"></script>
-  <script type="text/javascript" src="./js/showEvents.js"></script>
 </html>

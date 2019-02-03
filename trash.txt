@@ -1,0 +1,32 @@
+let eventSpace = create('div'),
+    hanging = create('div'),
+    i1 = create('i'),
+    i2 = create('i'),
+    i3 = create('i'),
+    i4 = create('i'),
+    eventCard = create('i'),
+    shadow = create('div'),
+    img = create('img'),
+    overlay = create('div'),
+    join = craete('div'),
+    details = create('div'),
+    spots = create('span'),
+    eventName = create('span'),
+    hostp = create('p'),
+    strong = create('strong'),
+    hostname = create('span'),
+    more = create('div'),
+    venue = create('strong'),
+    address = create('span'),
+    timing = create('strong'),
+    time = create('span');
+addClass(eventSpace, 'event-space');
+addClass(hanging, 'hanging-bar');
+addClass(i1, 'fas fa-pencil-alt' );
+addClass(i2, 'fas fa-pencil-alt' );
+addClass(i3, 'fas fa-pencil-alt' );
+addClass(i4, 'fas fa-pencil-alt' );
+append(hanging,i1);
+append(hanging,i2);
+append(hanging,i3);
+append(hanging,i4);
