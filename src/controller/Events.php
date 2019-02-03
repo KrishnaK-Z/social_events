@@ -12,7 +12,7 @@ class Events
   private $eventsDelegate, $participateEvents, $suggestion, $logger;
 
   public function __construct(){
-    $this->eventsDelegate = = new EventsDelegate();
+    $this->eventsDelegate = new EventsDelegate();
     $this->participateEvents = new ParticipateEvent();
     $this->suggestion = new Suggestion();
     $this->logger = new DB_Logger();
