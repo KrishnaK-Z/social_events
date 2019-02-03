@@ -15,7 +15,7 @@ class Users
   public function getUserObject( $datas )
   {
     $usersModel = new UsersModel();
-    $usersModel->setUserId( $datas['userId'] );
+    $usersModel->setUserId( $datas['userId'] );  //change into the session id in the future reference.
     $usersModel->setUserName( $datas['userName'] );
     $usersModel->setUserEmail( $datas['userEmail'] );
     $usersModel->setUserPassword( $datas['password'] );
