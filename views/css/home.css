@@ -316,7 +316,7 @@ a{
 	background:#f85a40;
 	opacity:0;
 }
-#join{
+.join{
   position: absolute;
   top: 30%;
   left: 50%;
@@ -334,11 +334,11 @@ a{
   outline: none;
   opacity: 0;
 }
-.event-card.animate .overlay, .event-card.animate #join{
+.event-card.animate .overlay, .event-card.animate .join{
 	opacity:0.7;
   transition: all 200ms ease-out;
 }
-#join:hover{
+.join:hover{
   background: red;
 }
 .more-details{

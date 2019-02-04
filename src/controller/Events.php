@@ -35,16 +35,19 @@ class Events
   public function showAllEventsPage($request, $response, $args)
   {
     $results;
-    //search by area date rating participation hosted by
-    // if( isset($_GET['name']) ){
-    //   $result = $this->eventsDelegate->filterEvent("event_name", $_GET['name']);
-    // }
-    // else if( isset[$_GET['date']] ){
-    //   $result = $this->eventsDelegate->filterEvent("event_date", $_GET['date']);
-    // }
-    // else {
+    // search by area date rating participation hosted by
+    if( isset($_GET['name']) ){
+      $result = $this->eventsDelegate->filterEvent("event_name", $_GET['name']);
+    }
+    else if( isset($_GET['date']) ){
+      $result = $this->eventsDelegate->filterEvent("event_date", $_GET['date']);
+    }
+    else if( isset($_GET['area']) ){
+      $result = $this->eventsDelegate->filterEvent("area", $_GET['area']);
+    }
+    else {
       $results = $this->eventsDelegate->showAllEventsDetails();
-    // }
+    }
     return $response->withJson($results);
   }
 

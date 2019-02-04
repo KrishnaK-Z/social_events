@@ -43,9 +43,9 @@ class Events extends BaseDelegate
   }
 
 
-  public function filterEvent(){
+  public function filterEvent($filter, $value){
     $eventsDao = new EventsDao();
-    return $eventsDao->eventsSearch();
+    return $eventsDao->eventsSearch( $filter, $value );
   }
 
 

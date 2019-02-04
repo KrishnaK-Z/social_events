@@ -12,7 +12,7 @@ export let constructEventCard = (event) => {
                 <div class="shadow"></div>
                   <img src="https://images.unsplash.com/photo-1539805430028-e3aa3f6c2172?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=688&q=80" alt=""/>
                   <div class="overlay"></div>
-                  <button type="join" name="join" id="${event.event_id}">JOIN</button>
+                  <button type="join" name="join" class="join" id="${event.event_id}">JOIN</button>
                       <div class="details-container">
                           <span class="spots">${event.spots}</span>
                           <span classhi first notes="event-name">${event.event_name}</span>

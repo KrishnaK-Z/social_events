@@ -1,6 +1,7 @@
 
-import  {urls, settings, fetchFunc}  from './fetchUtils.js'
-import {constructEventCard} from './constructions.js'
+import  {urls, settings, fetchFunc}  from './fetchUtils.js';
+import {constructEventCard} from './constructions.js';
+// import fetchScript from 'fetch-script';
 
 (function(){
 
@@ -12,8 +13,9 @@ let elementsType = {
   showItemContainers: document.getElementsByClassName('grid-wrapper')[0],
   eventNotify: document.querySelectorAll('[type = "event-notfy"]')[0],
   suggNotify: document.querySelectorAll('[type = "sugg-notfy"]')[0],
-  likeEvent: document.querySelectorAll('[type = "like"]')
 }
+
+
 
 let suggNotify = () => {
   fetchFunc(urls.suggNotify, settings.getInit).then( (suggCount) => {
@@ -40,9 +42,28 @@ elementsType.showAllEvents.addEventListener( 'click',(event) => {
 
   fetchFunc(urls.showAllEvents, settings.getInit)
   .then( (events) => {
+
+    if(document.querySelectorAll('[dynamic = "load"]')[0]){
+      document.body.removeChild(document.querySelectorAll('[dynamic = "load"]')[0]);
+    }
+
     events.forEach( (event)=>{
       elementsType.showItemContainers.innerHTML+=constructEventCard(event);
+
     }  );
+
+      [
+        './js/loadjs.js'
+      ].forEach(function(src) {
+
+        var script = document.createElement('script');
+        script.type= "text/javascript";
+        script.setAttribute("dynamic", "load");
+        script.src = src;
+        script.async = false;
+        document.body.appendChild(script);
+      });
+
   } )
   .catch( (error) => {
     log(error);
