@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+
 	$('#subbtn').click(function(event){
 		event.preventDefault();
 		//.serializeArray() if want to be in array format instead of json
@@ -55,10 +56,9 @@ $(document).ready(function(){
 					 dataType: 'json',
 										}) .done(function (json){
 											console.log(json);
+											localStorage.setItem('userId', json['userId']);
 										 if(json){
-											 alert("Success")
-											 // console.log(json);
-											 // window.location("register.php");
+											 console.log(json);
 										 }
 										 else{
 											 alert("Error")
@@ -70,42 +70,5 @@ $(document).ready(function(){
 
 
 	});
-
-
-	$('#addEventBtn').click(function(event){
-		event.preventDefault();
-
-		var form = $('#addEventForm')[0];
-		var data = jQuery('#addEventForm').serialize();
-		alert(data)
-
-		$.ajax({
-
-					 url: $(form).attr('action'),
-					 data: data,
-					 // contentType: "application/json",
-					 // contentType: "JSON",
-					 //no content type while using the seialize
-					 processData: false,
-					 headers: { 'Access-Control-Allow-Origin': '*' },
-					 type: 'POST',
-					 crossDomain: true,
-					 dataType: 'json',
-										}) .done(function (json){
-										 // console.log(json)
-										 if(json==1){
-											 alert("Success")
-										 }
-										 else{
-											 alert("Error")
-										 }
-
-			 }).fail(function(xhr,status,errorThrow){
-				 // console.log('error'+errorThrow)
-			 });
-
-
-	});
-
 
 });

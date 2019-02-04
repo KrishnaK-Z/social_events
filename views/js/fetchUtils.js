@@ -3,7 +3,8 @@ const baseUrl = "http://localhost/social_events/public";
 export let urls = {
   showAllEvents: baseUrl+"/events",
   suggNotify: baseUrl+"/sugg/notify",
-  eventNotify: baseUrl+"/events/notify"
+  eventNotify: baseUrl+"/events/notify",
+
 }
 
 const defHeaders = {
@@ -21,7 +22,7 @@ export let settings = {
 
   postInit: (data)=>{
     return {
-      method: 'POST',
+      method: "POST",
       headers: defHeaders,
       mode: "cors",
       cache: "default",

@@ -1,10 +1,8 @@
 
 import  {urls, settings, fetchFunc}  from './fetchUtils.js';
 import {constructEventCard} from './constructions.js';
-// import fetchScript from 'fetch-script';
 
 (function(){
-
 
 let elementsType = {
   showAllEvents: document.querySelectorAll('[data-type = "all-events"]')[0],
@@ -57,7 +55,7 @@ elementsType.showAllEvents.addEventListener( 'click',(event) => {
       ].forEach(function(src) {
 
         var script = document.createElement('script');
-        script.type= "text/javascript";
+        script.type= "module";
         script.setAttribute("dynamic", "load");
         script.src = src;
         script.async = false;

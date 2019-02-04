@@ -24,6 +24,9 @@ $app->get('/sugg/notify', SuggestedList::class . ':loadSuggestions');
 
 
 $app->get('/events/notify', SuggestedList::class . ':loadNewEvents');
+
+$app->post('/join/{userId}/events/{eventId}', Events::class . ':joinEvent');
+
 //
 // // $app->get('/users/profile?search=name', Users::class . ':showUserDetails');
 //
@@ -38,7 +41,7 @@ $app->get('/events/notify', SuggestedList::class . ':loadNewEvents');
 //
 // $app->get('/se', EventsCtrl::class . ':showAllEventsPage');
 //
-// $app->post('/join/{userId}/events/{eventId}', EventsCtrl::class . ':joinEvent');
+
 //
 
 //

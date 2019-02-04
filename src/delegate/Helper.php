@@ -38,6 +38,7 @@ class Helper
 
   public function getEventObject( $datas )
   {
+    $this->eventsModel->setEventId( $datas['eventId'] );
     $this->eventsModel->setEventName( $datas['eventName'] );
     $this->eventsModel->setEventDate( $datas['eventDate'] );
     $this->eventsModel->setStartTime( $datas['startTime'] );

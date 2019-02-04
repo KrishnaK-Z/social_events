@@ -1,8 +1,6 @@
 import  {urls, settings, fetchFunc}  from './fetchUtils.js'
-import {constructEventCard} from './constructions.js'
 (function(){
   $('.event-card').hover(function(){
-    console.log("hover");
       $(this).addClass('animate');
      }, function(){
       $(this).removeClass('animate');
@@ -18,21 +16,14 @@ import {constructEventCard} from './constructions.js'
 
   elements.joinBtn.forEach( (btn) => {
     btn.addEventListener("click", (event) => {
-
+      var url = "http://localhost/social_events/public/join/"+localStorage.getItem('userId')+"/events/"+event.target.id;
+      fetchFunc(url, settings.postInit(""))
+      .then( (data) => {
+        log(data);
+      } )
+      .catch((error) => {
+        log(error);
+      });
     });
   } );
 })();
-
-
-
-
-  // var els = document.getElementsByClassName("event-card");
-  //
-  // Array.prototype.forEach.call(els, function(el) {
-  //     el.addEventListener("mouseover", function(event){
-  //       addClass(event.target, 'animate', callBack);
-  //       function callBack(el){
-  //         removeClass(el,'animate');
-  //       }
-  //     });
-  // });
