@@ -47,8 +47,14 @@
     public function getTotalEventsList()
     {
       $selector = "count(event_id) as events_count";
-      // $wherePhrase = NULL;
       $results = parent::selectBy($this->tableName, $wherePhrase, $selector);
+      return $results;
+    }
+
+    public function eventsSearch( $select, $value ){
+      $results = parent::hardCodeSelect("select * from events inner join address_details on events.address_id = address_details.address_id
+                                    inner join event_category on events.event_category_id = event_category.event_category_id
+                                    inner join users on users.user_id = events.coordinator_id where ".$select." = '".$value."'");
       return $results;
     }
 

@@ -1,3 +1,7 @@
 [2019-02-03 22:53:21] Event_Management_db.ERROR: Registeration request for the following data  {"userName":"sds","roleType":"participant","phonenumber":"333","streetAddress":"sd","area":"asd","pincode":"34","userEmail":"asss@ssd.cd","password":"asd","confpass":""} [] []
 [2019-02-03 23:10:08] Event_Management_db.WARNING: SQLSTATE[HY000]: General error: 1366 Incorrect integer value: '' for column 'phone_number' at row 1 [] []
 [2019-02-03 23:14:33] Event_Management_db.WARNING: SQLSTATE[HY000]: General error: 1366 Incorrect integer value: '' for column 'phone_number' at row 1 [] []
+[2019-02-04 10:04:43] Event_Management_db.ERROR: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'user_id' cannot be null [] []
+[2019-02-04 10:04:56] Event_Management_db.ERROR: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'user_id' cannot be null [] []
+[2019-02-04 11:48:20] Event_Management_db.ERROR: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'user_id' cannot be null [] []
+[2019-02-04 11:48:39] Event_Management_db.ERROR: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'user_id' cannot be null [] []

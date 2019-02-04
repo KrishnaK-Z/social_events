@@ -1,8 +1,8 @@
 <?php
 
-namespace App\controllers;
+namespace App\controller;
 
-use App\Delegates\Suggestion;
+use App\delegate\Suggestion;
 use App\utils\DB_Logger;
 
 class SuggestedList
@@ -11,7 +11,7 @@ class SuggestedList
   private $suggestion, $logger;
 
   public function __construct(){
-    $this->uggestion = new Suggestion();
+    $this->suggestion = new Suggestion();
     $this->logger = new DB_Logger();
   }
 

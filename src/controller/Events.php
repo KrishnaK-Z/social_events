@@ -24,6 +24,7 @@ class Events
   public function addEvents($request, $response, $args)
   {
     $datas = $request->getParsedBody();
+    $datas['userId'] = $_SESSION['userId'];
     $results = $this->eventsDelegate->addEvents($datas);
     $this->logger->log("info","New Event Added by " . " " . $_SESSION['userId'] );
     return $response->withJson($results);
@@ -33,7 +34,17 @@ class Events
 
   public function showAllEventsPage($request, $response, $args)
   {
-    $results = $this->eventsDelegate->showAllEventsDetails();
+    $results;
+    //search by area date rating participation hosted by
+    // if( isset($_GET['name']) ){
+    //   $result = $this->eventsDelegate->filterEvent("event_name", $_GET['name']);
+    // }
+    // else if( isset[$_GET['date']] ){
+    //   $result = $this->eventsDelegate->filterEvent("event_date", $_GET['date']);
+    // }
+    // else {
+      $results = $this->eventsDelegate->showAllEventsDetails();
+    // }
     return $response->withJson($results);
   }
 

@@ -37,8 +37,9 @@ class Suggestion
   {
     //sample input
     $user = 2;
-    $suggestedBy = $this->getSuggestedBy($user);
-    // $suggestedBy = $this->getSuggestedBy($_SESSION['userId']);
+    // $suggestedBy = $this->getSuggestedBy($user);
+    $suggestedBy = $this->getSuggestedBy($_SESSION['userId']);
+
     $suggestedTo = $this->getSuggestedTo( $datas['suggestedToUserId'] );
     $suggestedEvent = $this->getSuggestedEvent( $datas['eventId'] );
 
@@ -59,9 +60,9 @@ class Suggestion
 //getting the suggestion list from the database and show notification if any new suggestions
   public function loadSuggestedList()
   {
-    $var = 1;
-    // $suggestedTo = $this->getSuggestedTo( $_SESSION['userId'] );
-    $suggestedTo = $this->getSuggestedTo( $var );
+    // $var = 1;
+    session_start();
+    $suggestedTo = $this->getSuggestedTo( $_SESSION['userId'] );
 
     $suggestionsNotification = new SuggestionsNotification();
     if( !$suggestionsNotification->lastSeenSuggestions( $suggestedTo->getUserId() ) )

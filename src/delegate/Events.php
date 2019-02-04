@@ -1,48 +1,20 @@
 <?php
 
 namespace App\delegate;
-use App\model\Users as UsersModel;
-use App\model\Events as EventsModel;
-use App\model\EventCategory as EventCatModel;
-use App\model\AddressDetails as AddressModel;
+
 use App\DAO\EventsDao;
 use App\DAO\AddressDao;
 
-class Events
+class Events extends BaseDelegate
 {
-
-  private function getUserObject( $datas )
-  {
-    $usersModel = new UsersModel();
-    $usersModel->setUserId( $_SESSION['userId'] );
-    return $usersModel;
-  }
-
-  private function getEventObject( $datas )
-  {
-    $eventsModel = new EventsModel();
-    $eventsModel->setEventName( $datas['eventName'] );
-    $eventsModel->setEventDate( $datas['eventDate'] );
-    $eventsModel->setStartTime( $datas['startTime'] );
-    $eventsModel->setEndTime( $datas['endTime'] );
-    $eventsModel->setSpots( $datas['spots'] );
-    return $eventsModel;
-  }
-
-  private function getEventCategoryObject( $datas )
-  {
-    $eventCatModel = new EventCatModel();
-    $eventCatModel->setCategoryType( $datas['eventCategory'] );
-    return $eventCatModel;
-  }
 
   //addin the events
   public function addEvents( $datas )
   {
 
-    $userObject = $this->getUserObject( $datas );
-    $eventObject = $this->getEventObject( $datas );
-    $categoryObject = $this->getEventCategoryObject( $datas );
+    $userObject = $this->helper->getUserObject( $datas );
+    $eventObject = $this->helper->getEventObject( $datas );
+    $categoryObject = $this->helper->getEventCategoryObject( $datas );
 
     $eventsDao = new EventsDao();
 
@@ -70,6 +42,11 @@ class Events
     return $eventsDao->showAllEventsDetails();
   }
 
+
+  public function filterEvent(){
+    $eventsDao = new EventsDao();
+    return $eventsDao->eventsSearch();
+  }
 
 
 }

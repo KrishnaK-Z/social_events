@@ -71,7 +71,7 @@
             <nav class="right-nav">
         			<ul class="top-nav">
         				<li><a href="">Events</a><span type="event-notfy">0</span></li>
-        				<li><a href="">Suggestions</a><span type="event-notfy">0</span></li>
+        				<li><a href="">Suggestions</a><span type="sugg-notfy">0</span></li>
         				<li class="account">
         					<a href="">
         						<!-- <img src="img/cd-avatar.png" alt="avatar"> -->
@@ -88,42 +88,12 @@
               <div class="hanging-bar">
                 <i class="fas fa-pencil-alt"></i>
                 <i class="fas fa-star"></i>
-                <i class="fas fa-thumbs-up"></i>
+                <i class="fas fa-thumbs-up" type="like"></i>
                 <i class="fas fa-user-friends"></i>
               </div>
               <div class="event-card">
 
                   	<div class="shadow"></div>
-                      <img src="https://images.unsplash.com/photo-1539805430028-e3aa3f6c2172?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=688&q=80" alt=""/>
-                      <div class="overlay"></div>
-                      <button type="join" name="join" id="join">JOIN</button>
-                          <div class="details-container">
-                              <span class="spots">23/100</span>
-                              <span class="event-name">Event Name</span>
-                              <p>Put Chuttney</p>
-                              <div class="more-details">
-                                  <strong>Venue</strong>
-                                  <span>123 Street, Area, Ch-34.</span>
-                                  <strong>Timing</strong>
-                                  <span>8:00am to 7:00pm</span>
-                              </div>
-                          </div>
-              </div>
-            </div>
-
-
-
-            <!-- Event Card Layout -->
-            <div class="event-space">
-              <div class="hanging-bar">
-                <i class="fas fa-pencil-alt"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-thumbs-up"></i>
-                <i class="fas fa-user-friends"></i>
-              </div>
-              <div class="event-card">
-
-                    <div class="shadow"></div>
                       <img src="https://images.unsplash.com/photo-1539805430028-e3aa3f6c2172?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=688&q=80" alt=""/>
                       <div class="overlay"></div>
                       <button type="join" name="join" id="join">JOIN</button>
@@ -150,18 +120,6 @@
   <script type="text/javascript" src="js/home.js"></script>
 
   <script type="text/javascript" src="./js/jsUtils.js"></script>
-  <script type="text/javascript" src="./js/showEvents.js"></script>
-  <script type="text/javascript">
-  $(document).ready(function(){
-      $('.event-card').hover(function(){
-        console.log("hoer");
-          $(this).addClass('animate');
-         }, function(){
-          $(this).removeClass('animate');
-      });
-      $('.ham-wrapper').on('click', function() {
-        $('.page-container').toggleClass('cols');
-        });
-      });
-  </script>
+  <script type="module" src="./js/showEvents.js"></script>
+  <script type="text/javascript" src="./js/loadjs.js"></script>
 </html>

@@ -13,7 +13,7 @@ class Login extends BaseDelegate
   public function loginUser( $datas )
   {
     $userObject = $this->helper->getUserObject( $datas );
-    $rolesObject = $this->helper->getRolesObject();
+    $rolesObject = $this->helper->getRolesObject( $datas );
 
 
     $usersDao = new UsersDao();

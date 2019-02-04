@@ -12,17 +12,20 @@ $app->group('/home',function(){
   $this->post('/signin', RegisterLogin::class . ':loginSubmit');
 });
 
-$app->put('/users/profile/change', Users::class . ':editUserDetails');
+$app->put('/users/profile', Users::class . ':editUserDetails');
 
 $app->get('/users', Users::class . ':showAllUserDetails');
 
 $app->get('/find', Users::class . ':showUserDetails');
 
 $app->get('/events', Events::class . ':showAllEventsPage');
+
+$app->get('/sugg/notify', SuggestedList::class . ':loadSuggestions');
+
+
+$app->get('/events/notify', SuggestedList::class . ':loadNewEvents');
 //
 // // $app->get('/users/profile?search=name', Users::class . ':showUserDetails');
-//
-// $app->put('/edit/{userId}', RegisterLoginCtrl::class . ':editUserDetails');
 //
 
 //
@@ -37,10 +40,7 @@ $app->get('/events', Events::class . ':showAllEventsPage');
 //
 // $app->post('/join/{userId}/events/{eventId}', EventsCtrl::class . ':joinEvent');
 //
-//
-// //load this api on page load
-// //load the new suggestions for us
-// $app->get('/notification/suggestions', SuggestedList::class . ':loadSuggestions');
+
 //
 // //load this api for page load
 // //to see the new updated events wrt the old ones

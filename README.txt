@@ -164,3 +164,27 @@ update the notification suggestion count table by the number of count in the sug
 
 
 array("message" => "updated  ")
+
+
+
+
+
+
+
+
+
+// let eventNotify = () => {
+//   fetch( urls.suggNotify, settings.getInit )
+//   .then( (response) => {
+//     return response.json();
+//   } )
+//   .then( (suggCount) => {
+//     elementsType.suggNotify.innerHTML = suggCount;
+//   } )
+//   .catch( (error) => {
+//     log(error);
+//   } );
+// }
+
+
+// 
