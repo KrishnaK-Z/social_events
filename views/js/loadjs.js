@@ -19,6 +19,7 @@ export function load(){
   elements.joinBtn.forEach( (btn) => {
     btn.addEventListener("click", (event) => {
       var url = "http://localhost/social_events/public/join/"+localStorage.getItem('userId')+"/events/"+event.target.id;
+      log(url);
       fetchFunc(url, settings.postInit(""))
       .then( (data) => {
         log(data);
@@ -28,4 +29,4 @@ export function load(){
       });
     });
   } );
-};
+}

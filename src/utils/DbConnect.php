@@ -38,7 +38,7 @@ class DbConnect
       $this->query = $this->conn->prepare($sql);
       $this->query->execute();
       $results = $this->query->fetchAll(PDO::FETCH_ASSOC);
-      // $this->logger->log(01, json_encode($results));
+      $this->logger->log(01, json_encode($results));
       return $results;
     }
     catch (PDOException $e){

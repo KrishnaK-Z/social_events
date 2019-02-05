@@ -29,7 +29,7 @@
    }
 
    public function getParticipatedEventsList( $userId ){
-     $selector = "event_id",
+     $selector = "event_id";
      $wherePhrase = array('user_id' => $userId);
      $results = parent::selectBy("participation", $wherePhrase, $selector);
      return $results;
