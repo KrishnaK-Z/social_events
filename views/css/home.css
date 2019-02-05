@@ -228,6 +228,7 @@ a{
 .top-nav > li a {
   color: #00334e;
   padding: 0.6em .6em !important;
+  cursor: none;
 }
 .top-nav img {
   display: block;
@@ -241,6 +242,25 @@ a{
   border-radius: 30%;
   color: #fff;
   background: #ffc20e;
+  cursor: pointer;
+}
+
+.top-nav > li ul.newEventsList{
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 300px;
+  height: 120px;
+  box-sizing: border-box;
+  background: #fff;
+  padding: 10px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.top-nav > li ul.newEventsList li{
+  padding: 5px 10px;
 }
 
 /* Layout for the list of events */

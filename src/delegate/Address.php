@@ -6,7 +6,7 @@ use App\model\AddressDetails as AddressModel;
 use App\DAO\AddressDao;
 
 class Address
-
+{
   public $addressModel;
   public $addressDao;
 

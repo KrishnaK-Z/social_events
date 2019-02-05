@@ -11,14 +11,12 @@ class Events extends BaseDelegate
   //addin the events
   public function addEvents( $datas )
   {
-
     $userObject = $this->helper->getUserObject( $datas );
     $eventObject = $this->helper->getEventObject( $datas );
     $categoryObject = $this->helper->getEventCategoryObject( $datas );
-
     $eventsDao = new EventsDao();
-
-    $categoryObject->setCategoryId( $eventsDao->getEventCategoryId($categoryObject->getCategoryType())[0]['event_category_id'] );
+    
+    $categoryObject->setEventCategoryId( $eventsDao->getEventCategoryId($categoryObject->getEventCategoryName())[0]['event_category_id'] );
 
 
 
@@ -28,7 +26,7 @@ class Events extends BaseDelegate
     $address->addAddressDetails();
 
 
-    $eventsDao->insertEventDetails( $eventObject->getEventName(), $categoryObject->getCategoryId(), $userObject->getUserId(),
+    $eventsDao->insertEventDetails( $eventObject->getEventName(), $categoryObject->getEventCategoryId(), $userObject->getUserId(),
                                     $eventObject->getEventDate(), $eventObject->getStartTime(), $eventObject->getEndTime(),
                                     $eventObject->getSpots(), $address->getAddressId() );
   }

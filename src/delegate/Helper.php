@@ -60,6 +60,12 @@ class Helper
     return $this->rolesModel;
   }
 
+  public function getEventCategoryObject( $datas )
+  {
+    $this->eventCatModel->setEventCategoryName($datas['eventCategory']);
+    return $this->eventCatModel;
+  }
+
 }
 
 

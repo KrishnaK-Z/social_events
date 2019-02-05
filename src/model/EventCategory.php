@@ -19,11 +19,11 @@ class EventCategory implements EventCatAbs
   }
 
   public function getEventCategoryName(){
-    return $this->$eventCategoryName;
+    return $this->eventCategoryName;
   }
 
   public function setEventCategoryName($eventCategoryName){
-    $this->$eventCategoryName = $eventCategoryName;
+    $this->eventCategoryName = $eventCategoryName;
   }
 
 }

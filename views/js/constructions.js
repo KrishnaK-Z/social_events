@@ -1,5 +1,5 @@
 export let constructEventCard = (event) => {
-  
+
     let result =
     `<div class="event-space" data-category="${event.event_category_name}">
       <div class="hanging-bar">
@@ -28,4 +28,12 @@ export let constructEventCard = (event) => {
           </div>
       </div>`;
       return result;
+}
+
+
+
+
+export let constructNewEventList=( data )=>{
+  let result = `<li>${data[0].event_name}</li>`;
+  return result;
 }

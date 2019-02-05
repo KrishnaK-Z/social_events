@@ -25,7 +25,6 @@
     public function insertEventDetails($eventName, $categoryId, $coordinatorId, $eventDate, $startTime,
                                        $endTime, $spots, $addressId)
     {
-
       $columns = array('event_name', 'event_category_id', 'coordinator_id', 'event_date', 'start_time', 'end_time', 'spots', 'address_id');
       $values = array('event_name' => $eventName, 'event_category_id' => $categoryId,
                       'coordinator_id' => $coordinatorId, 'event_date' => $eventDate,

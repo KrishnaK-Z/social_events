@@ -7,6 +7,7 @@ export let urls = {
   eventSeen: baseUrl+"/events/notify/seen",
   suggSeen: baseUrl+"/sugg/notify/seen",
   newEvents: baseUrl+"/new/events",
+  addEvents: baseUrl+"/addevent",
 }
 
 const defHeaders = {

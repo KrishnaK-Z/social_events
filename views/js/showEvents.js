@@ -1,6 +1,5 @@
-
 import  {urls, settings, fetchFunc, loadJsFiles}  from './fetchUtils.js';
-import {constructEventCard} from './constructions.js';
+import {constructEventCard, constructNewEventList} from './constructions.js';
 
 (function(){
 
@@ -14,18 +13,6 @@ let newEventId = () => {
   return eventArray.loadedEvents.filter(function(item) { return eventArray.lastSeenEvents.indexOf(item) == -1; });
 }
 
-// lastSeenEvents = loadedEvents.slice();
-
-fetchFunc( urls.newEvents, settings.postInit( JSON.stringify( newEventId() ) ) )
-.then( (datas) => {
-  datas.forEach( (data)=>{
-    log(data[0].event_name);
-  } );
-} )
-.catch( (error)=>{
-  log(error);
-} );
-
 
 let elementsType = {
   showAllEvents: document.querySelectorAll('[data-type = "all-events"]')[0],
@@ -34,7 +21,41 @@ let elementsType = {
   showItemContainers: document.getElementsByClassName('grid-wrapper')[0],
   eventNotify: document.querySelectorAll('[type = "event-notfy"]')[0],
   suggNotify: document.querySelectorAll('[type = "sugg-notfy"]')[0],
+  newEventsList: document.getElementsByClassName('newEventsList')[0],
 }
+
+fetchFunc( urls.newEvents, settings.postInit( JSON.stringify( newEventId() ) ) )
+.then( (datas) => {
+  datas.forEach( (data)=>{
+    elementsType.newEventsList.innerHTML+=constructNewEventList(data);
+  } );
+} )
+.catch( (error)=>{
+  log(error);
+} );
+
+
+let loadAllEvents = () => {
+  fetchFunc(urls.showAllEvents, settings.getInit)
+  .then( (events) => {
+    log("fetch");
+    // eventArray.loadedEvents = [];
+    events.forEach( (event)=>{
+      elementsType.showItemContainers.innerHTML+=constructEventCard(event);
+    }  );
+
+    loadJsFiles([
+      './js/loadjs.js'
+    ]);
+
+  } )
+  .catch( (error) => {
+    log(error);
+  } );
+}
+
+//initially load the all events page
+loadAllEvents();
 
 let suggNotify = () => {
   fetchFunc(urls.suggNotify, settings.getInit).then( (suggCount) => {
@@ -58,6 +79,7 @@ elementsType.eventNotify.addEventListener("click", (event)=>{
   fetchFunc(urls.eventSeen, settings.putInit("") )
   .then((data)=>{
     log(data);
+    eventArray.lastSeenEvents = eventArray.loadedEvents.slice();
   })
 });
 
@@ -73,22 +95,7 @@ elementsType.showAllEvents.addEventListener( 'click',(event) => {
 
   elementsType.showItemContainers.innerHTML = "";
 
-  fetchFunc(urls.showAllEvents, settings.getInit)
-  .then( (events) => {
-    log("fetch");
-    // eventArray.loadedEvents = [];
-    events.forEach( (event)=>{
-      elementsType.showItemContainers.innerHTML+=constructEventCard(event);
-    }  );
-
-    loadJsFiles([
-      './js/loadjs.js'
-    ]);
-
-  } )
-  .catch( (error) => {
-    log(error);
-  } );
+  loadAllEvents();
 
 } );
 

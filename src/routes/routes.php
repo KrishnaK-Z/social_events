@@ -32,6 +32,8 @@ $app->put('/sugg/notify/seen', SuggestedList::class . ':updateSuggestions');
 $app->put('/events/notify/seen', SuggestedList::class . ':updateNewEventsNotfy');
 
 $app->post('/new/events', Events::class . ':showNewEvents');
+
+$app->post('/addevent', Events::class . ':addEvents');
 //
 // // $app->get('/users/profile?search=name', Users::class . ':showUserDetails');
 //
@@ -53,12 +55,7 @@ $app->post('/new/events', Events::class . ':showNewEvents');
 // //load this api for page load
 // //to see the new updated events wrt the old ones
 // $app->get('/notification/events', SuggestedList::class . ':loadNewEvents');
-//
-// //checking
-// //updating the unseen suggestions by clicking the notification button
 
-//
-// //updating the old seen event count with new came events
 //
 //
 // //rating the event by the particular reviews

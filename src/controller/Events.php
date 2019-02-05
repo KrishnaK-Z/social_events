@@ -24,6 +24,7 @@ class Events
   public function addEvents($request, $response, $args)
   {
     $datas = $request->getParsedBody();
+    session_start();
     $datas['userId'] = $_SESSION['userId'];
     $results = $this->eventsDelegate->addEvents($datas);
     $this->logger->log("info","New Event Added by " . " " . $_SESSION['userId'] );
