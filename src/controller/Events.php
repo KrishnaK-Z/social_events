@@ -68,7 +68,13 @@ class Events
 
   public function suggestEvent( $request, $response, $args )
   {
-    $results = $this->uggestion->suggestionRequest($args);
+    $results = $this->suggestion->suggestionRequest($args);
+    return $response->withJson($results);
+  }
+
+  public function showMyEvents( $request, $response, $args )
+  {
+    $results = $this->eventsDelegate->showEventsByUserId( $args['id'] );
     return $response->withJson($results);
   }
 

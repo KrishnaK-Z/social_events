@@ -20,6 +20,7 @@ $app->get('/find', Users::class . ':showUserDetails');
 
 $app->get('/events', Events::class . ':showAllEventsPage');
 
+
 $app->get('/sugg/notify', SuggestedList::class . ':loadSuggestions');
 
 
@@ -34,6 +35,8 @@ $app->put('/events/notify/seen', SuggestedList::class . ':updateNewEventsNotfy')
 $app->post('/new/events', Events::class . ':showNewEvents');
 
 $app->post('/addevent', Events::class . ':addEvents');
+
+$app->get('/events/{id}', Events::class . ':showMyEvents');
 //
 // // $app->get('/users/profile?search=name', Users::class . ':showUserDetails');
 //

@@ -8,6 +8,7 @@ export let urls = {
   suggSeen: baseUrl+"/sugg/notify/seen",
   newEvents: baseUrl+"/new/events",
   addEvents: baseUrl+"/addevent",
+  myEvents: baseUrl+"/events/"+localStorage.getItem('userId')[0],
 }
 
 const defHeaders = {

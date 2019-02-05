@@ -64,6 +64,14 @@
       return $results;
     }
 
+    public function eventByUserId( $coordinatorId ){
+      $results = parent::hardCodeSelect("select * from events inner join address_details on events.address_id = address_details.address_id
+                                    inner join event_category on events.event_category_id = event_category.event_category_id
+                                    inner join users on users.user_id = events.coordinator_id where events.coordinator_id = ".$coordinatorId);
+
+      return $results;
+    }
+
   }
 
 

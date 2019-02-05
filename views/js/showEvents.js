@@ -22,8 +22,10 @@ let elementsType = {
   eventNotify: document.querySelectorAll('[type = "event-notfy"]')[0],
   suggNotify: document.querySelectorAll('[type = "sugg-notfy"]')[0],
   newEventsList: document.getElementsByClassName('newEventsList')[0],
+  myEvents: document.querySelectorAll('[data-type="my-event"]')[0],
 }
 
+// To show notification for the newly added events
 fetchFunc( urls.newEvents, settings.postInit( JSON.stringify( newEventId() ) ) )
 .then( (datas) => {
   datas.forEach( (data)=>{
@@ -35,11 +37,11 @@ fetchFunc( urls.newEvents, settings.postInit( JSON.stringify( newEventId() ) ) )
 } );
 
 
-let loadAllEvents = () => {
-  fetchFunc(urls.showAllEvents, settings.getInit)
+// Function for loading the events based on the urls
+let loadAllEvents = (url) => {
+  fetchFunc(url, settings.getInit)
   .then( (events) => {
     log("fetch");
-    // eventArray.loadedEvents = [];
     events.forEach( (event)=>{
       elementsType.showItemContainers.innerHTML+=constructEventCard(event);
     }  );
@@ -55,8 +57,15 @@ let loadAllEvents = () => {
 }
 
 //initially load the all events page
-loadAllEvents();
+loadAllEvents(urls.showAllEvents);
 
+// Button Click action in the my events
+elementsType.myEvents.addEventListener("click", (event)=>{
+  elementsType.showItemContainers.innerHTML = "";
+  loadAllEvents(urls.myEvents);
+});
+
+// To load the number of new suggestions.
 let suggNotify = () => {
   fetchFunc(urls.suggNotify, settings.getInit).then( (suggCount) => {
     elementsType.suggNotify.innerHTML = suggCount;
@@ -66,6 +75,8 @@ let suggNotify = () => {
   } );
 }
 
+
+// To load the number of new events
 let eventNotify = () => {
   fetchFunc(urls.eventNotify, settings.getInit).then( (eventCount) => {
     elementsType.eventNotify.innerHTML = eventCount;
@@ -75,6 +86,8 @@ let eventNotify = () => {
   } );
 }
 
+
+// Click the event notification button -- updates the last seen count in the database
 elementsType.eventNotify.addEventListener("click", (event)=>{
   fetchFunc(urls.eventSeen, settings.putInit("") )
   .then((data)=>{
@@ -83,6 +96,8 @@ elementsType.eventNotify.addEventListener("click", (event)=>{
   })
 });
 
+
+// Click the suggestions button -- updates the seen sugg count in the DB
 elementsType.suggNotify.addEventListener("click", (event)=>{
   fetchFunc(urls.suggSeen, settings.putInit("") )
   .then((data)=>{
@@ -95,10 +110,12 @@ elementsType.showAllEvents.addEventListener( 'click',(event) => {
 
   elementsType.showItemContainers.innerHTML = "";
 
-  loadAllEvents();
+  loadAllEvents(urls.showAllEvents);
 
 } );
 
+
+// Calls in an equal interval on page load.
 setInterval(suggNotify, 3000);
 setInterval(eventNotify, 3000);
 

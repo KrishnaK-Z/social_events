@@ -15,7 +15,7 @@ class Events extends BaseDelegate
     $eventObject = $this->helper->getEventObject( $datas );
     $categoryObject = $this->helper->getEventCategoryObject( $datas );
     $eventsDao = new EventsDao();
-    
+
     $categoryObject->setEventCategoryId( $eventsDao->getEventCategoryId($categoryObject->getEventCategoryName())[0]['event_category_id'] );
 
 
@@ -54,6 +54,11 @@ class Events extends BaseDelegate
       array_push($newEventLists, $eventsDao->getEventById($data));
     }
     return $newEventLists;
+  }
+
+  public function showEventsByUserId( $userId ){
+    $eventsDao = new EventsDao();
+    return $eventsDao->eventByUserId( $userId );
   }
 
 }
