@@ -49,5 +49,14 @@ class Events extends BaseDelegate
   }
 
 
+  public function getNewEvents( $datas ){
+    $eventsDao = new EventsDao();
+    $newEventLists = [];
+    foreach( $datas as $data ){
+      array_push($newEventLists, $eventsDao->getEventById($data));
+    }
+    return $newEventLists;
+  }
+
 }
  ?>

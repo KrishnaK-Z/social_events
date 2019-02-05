@@ -84,68 +84,6 @@ validation
 
 
 
-// suggest to the other user
-end point: api/events/{event_id}/suggest/{suggested_to_user_id}
-get the current user id from the $_SESSION
-check if the event is already suggested to a user by a user
-if yes disable the suggest button
-for now just give the id for the suggest button
-
-
-//while registering the user insert the suggestion notification table as zero value
-
-//suggestion notification
-when opened check the table suggestion notification
-this table stores the number of suggestions for the particular user for the lase logged time
-if null assign the initial value zero
-get the number of suggestions from the suggested table for the particular user references is suggested_to
-if the count from the suggested table is greater than the notification table -- new notification are came
-
-//if the suggestoin notification button is clicked
-update the notification suggestion count table by the number of count in the suggested table with
-  references to the suggested_to user
-
-
-
-
-  $.ajax({
-    type: 'POST',
-    url: 'AJAX URL',
-    data: "YOUR DATA"
-    success: function(data){
-     window.location = "http://www.yoururl.com";
-    },
-    error: function(xhr, type, exception) {
-      // if ajax fails display error alert
-      alert("ajax error response type "+type);
-    }
-  });
-
-
-  <input id="btnGetResponse" type="button" value="Redirect" />
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-  <script type="text/javascript">
-  $(function () {
-      $("#btnGetResponse").click(function () {
-          $.ajax({
-              type: "POST",
-              url: "Default.aspx/GetResponse",
-              data: '{}',
-              contentType: "application/json; charset=utf-8",
-              dataType: "json",
-              success: function (response) {
-                 if (response.d == true) {
-                      alert("You will now be redirected.");
-                      window.location = "//www.aspsnippets.com/";
-                  }
-              },
-              failure: function (response) {
-                  alert(response.d);
-              }
-          });
-      });
-  });
-  </script>
 
 
 
@@ -187,4 +125,4 @@ array("message" => "updated  ")
 // }
 
 
-// 
+//

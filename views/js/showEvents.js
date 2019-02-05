@@ -1,8 +1,31 @@
 
-import  {urls, settings, fetchFunc}  from './fetchUtils.js';
+import  {urls, settings, fetchFunc, loadJsFiles}  from './fetchUtils.js';
 import {constructEventCard} from './constructions.js';
 
 (function(){
+
+let eventArray = {
+  loadedEvents: localStorage.getItem('loadedId') ?
+                  JSON.parse(localStorage.getItem('loadedId')) : [],
+  lastSeenEvents: localStorage.getItem('eventsId') ?
+                      JSON.parse(localStorage.getItem('eventsId')) : [],
+}
+let newEventId = () => {
+  return eventArray.loadedEvents.filter(function(item) { return eventArray.lastSeenEvents.indexOf(item) == -1; });
+}
+
+// lastSeenEvents = loadedEvents.slice();
+
+fetchFunc( urls.newEvents, settings.postInit( JSON.stringify( newEventId() ) ) )
+.then( (datas) => {
+  datas.forEach( (data)=>{
+    log(data[0].event_name);
+  } );
+} )
+.catch( (error)=>{
+  log(error);
+} );
+
 
 let elementsType = {
   showAllEvents: document.querySelectorAll('[data-type = "all-events"]')[0],
@@ -12,8 +35,6 @@ let elementsType = {
   eventNotify: document.querySelectorAll('[type = "event-notfy"]')[0],
   suggNotify: document.querySelectorAll('[type = "sugg-notfy"]')[0],
 }
-
-
 
 let suggNotify = () => {
   fetchFunc(urls.suggNotify, settings.getInit).then( (suggCount) => {
@@ -33,34 +54,36 @@ let eventNotify = () => {
   } );
 }
 
+elementsType.eventNotify.addEventListener("click", (event)=>{
+  fetchFunc(urls.eventSeen, settings.putInit("") )
+  .then((data)=>{
+    log(data);
+  })
+});
 
+elementsType.suggNotify.addEventListener("click", (event)=>{
+  fetchFunc(urls.suggSeen, settings.putInit("") )
+  .then((data)=>{
+    log(data);
+  })
+});
+
+// To load all the events in the list
 elementsType.showAllEvents.addEventListener( 'click',(event) => {
 
   elementsType.showItemContainers.innerHTML = "";
 
   fetchFunc(urls.showAllEvents, settings.getInit)
   .then( (events) => {
-
-    if(document.querySelectorAll('[dynamic = "load"]')[0]){
-      document.body.removeChild(document.querySelectorAll('[dynamic = "load"]')[0]);
-    }
-
+    log("fetch");
+    // eventArray.loadedEvents = [];
     events.forEach( (event)=>{
       elementsType.showItemContainers.innerHTML+=constructEventCard(event);
-
     }  );
 
-      [
-        './js/loadjs.js'
-      ].forEach(function(src) {
-
-        var script = document.createElement('script');
-        script.type= "module";
-        script.setAttribute("dynamic", "load");
-        script.src = src;
-        script.async = false;
-        document.body.appendChild(script);
-      });
+    loadJsFiles([
+      './js/loadjs.js'
+    ]);
 
   } )
   .catch( (error) => {

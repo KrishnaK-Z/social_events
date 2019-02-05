@@ -7,6 +7,13 @@
     public $tableName = 'events';
     public $categoryId;
 
+    public function getEventById($eventId){
+      $selector = "event_id, event_name";
+      $wherePhrase = array('event_id' => $eventId);
+      $results = parent::selectBy($this->tableName, $wherePhrase, $selector);
+      return $results;
+    }
+
     public function getEventCategoryId($categoryType)
     {
       $selector = "event_category_id";

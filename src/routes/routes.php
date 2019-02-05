@@ -27,6 +27,11 @@ $app->get('/events/notify', SuggestedList::class . ':loadNewEvents');
 
 $app->post('/join/{userId}/events/{eventId}', Events::class . ':joinEvent');
 
+$app->put('/sugg/notify/seen', SuggestedList::class . ':updateSuggestions');
+
+$app->put('/events/notify/seen', SuggestedList::class . ':updateNewEventsNotfy');
+
+$app->post('/new/events', Events::class . ':showNewEvents');
 //
 // // $app->get('/users/profile?search=name', Users::class . ':showUserDetails');
 //
@@ -51,10 +56,10 @@ $app->post('/join/{userId}/events/{eventId}', Events::class . ':joinEvent');
 //
 // //checking
 // //updating the unseen suggestions by clicking the notification button
-// $app->put('/notification/suggestions/seen', SuggestedList::class . ':updateSuggestions');
+
 //
 // //updating the old seen event count with new came events
-// $app->put('/notification/events/seen', SuggestedList::class . ':updateNewEventsNotfy');
+//
 //
 // //rating the event by the particular reviews
 // $app->put('/review/{userId}/event/{eventId}/rate', Reviews::class . ':reviewEvent');

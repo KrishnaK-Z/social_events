@@ -35,9 +35,7 @@ class Suggestion
 //send the suggestions list to the user
   public function suggestionRequest($datas)
   {
-    //sample input
-    $user = 2;
-    // $suggestedBy = $this->getSuggestedBy($user);
+
     $suggestedBy = $this->getSuggestedBy($_SESSION['userId']);
 
     $suggestedTo = $this->getSuggestedTo( $datas['suggestedToUserId'] );
@@ -75,6 +73,7 @@ class Suggestion
     //getting the suggestion count from the suggestion table
     $suggestions = new Suggestions();
     $suggestionTotalCount = $suggestions->getTotalSuggestedList( $suggestedTo->getUserId() )[0]['suggestion_count'];
+
     if( $lastSeenSugCount < $suggestionTotalCount )
     {
       return ( $suggestionTotalCount-$lastSeenSugCount );
@@ -87,9 +86,10 @@ class Suggestion
 
   public function loadEventsList()
   {
-    $user = 1;
-    $userObject = $this->getSuggestedBy($user);
-    // $userId = $this->getSuggestedBy( $_SESSION['userId'] );
+    // $user = 1;
+    // $userObject = $this->getSuggestedBy($user);
+    session_start();
+    $userObject = $this->getSuggestedTo( $_SESSION['userId'] );
     $suggestionsNotification = new SuggestionsNotification();
     if( !$suggestionsNotification->lastSeenSuggestions( $userObject->getUserId() ) )
     {
@@ -112,9 +112,8 @@ class Suggestion
 
   public function updateSuggestNotify()
   {
-    $user = 1;
-    $userObject = $this->getSuggestedTo($user);
-    // $userId = $this->getSuggestedBy( $_SESSION['userId'] );
+    session_start();
+    $userObject = $this->getSuggestedBy( $_SESSION['userId'] );
     $suggestions = new Suggestions();
     $suggestionTotalCount = $suggestions->getTotalSuggestedList( $userObject->getUserId() )[0]['suggestion_count'];
 
@@ -126,9 +125,8 @@ class Suggestion
 
   public function updateEventNotfy()
   {
-    $user = 1;
-    $userObject = $this->getSuggestedTo($user);
-    // $userId = $this->getSuggestedBy( $_SESSION['userId'] );
+    session_start();
+    $userObject = $this->getSuggestedBy( $_SESSION['userId'] );
     $eventsDao = new EventsDao();
     $suggestionsNotification = new SuggestionsNotification();
     $suggestionsNotification->updateCurrentCount( array( 'event_count' => $eventsDao->getTotalEventsList()[0]['events_count'] ) ,

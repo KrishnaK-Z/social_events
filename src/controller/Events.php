@@ -30,7 +30,11 @@ class Events
     return $response->withJson($results);
   }
 
-
+  public function showNewEvents($request, $response, $args){
+    $datas = $request->getParsedBody();//array
+    $results = $this->eventsDelegate->getNewEvents( $datas );
+    return $response->withJson($results);
+  }
 
   public function showAllEventsPage($request, $response, $args)
   {

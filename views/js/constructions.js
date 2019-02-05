@@ -1,4 +1,5 @@
 export let constructEventCard = (event) => {
+  
     let result =
     `<div class="event-space" data-category="${event.event_category_name}">
       <div class="hanging-bar">
