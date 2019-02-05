@@ -34,10 +34,10 @@ class Events extends BaseDelegate
 
 
 //display all the events details
-  public function showAllEventsDetails()
+  public function showAllEventsDetails($userId)
   {
     $eventsDao = new EventsDao();
-    return $eventsDao->showAllEventsDetails();
+    return $eventsDao->showAllEventsDetails($userId);
   }
 
 
@@ -60,6 +60,7 @@ class Events extends BaseDelegate
     $eventsDao = new EventsDao();
     return $eventsDao->eventByUserId( $userId );
   }
+
 
 }
  ?>

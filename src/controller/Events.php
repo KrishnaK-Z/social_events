@@ -51,7 +51,7 @@ class Events
       $result = $this->eventsDelegate->filterEvent("area", $_GET['area']);
     }
     else {
-      $results = $this->eventsDelegate->showAllEventsDetails();
+      $results = $this->eventsDelegate->showAllEventsDetails( $args['userId'] );
     }
     return $response->withJson($results);
   }
@@ -74,10 +74,9 @@ class Events
 
   public function showMyEvents( $request, $response, $args )
   {
-    $results = $this->eventsDelegate->showEventsByUserId( $args['id'] );
+    $results = $this->eventsDelegate->showEventsByUserId( $args['myid'] );
     return $response->withJson($results);
   }
-
 
 
 }

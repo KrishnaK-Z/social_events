@@ -1,14 +1,14 @@
 const baseUrl = "http://localhost/social_events/public";
 
 export let urls = {
-  showAllEvents: baseUrl+"/events",
+  showAllEvents: baseUrl+"/events/"+localStorage.getItem('userId')[0],
   suggNotify: baseUrl+"/sugg/notify",
   eventNotify: baseUrl+"/events/notify",
   eventSeen: baseUrl+"/events/notify/seen",
   suggSeen: baseUrl+"/sugg/notify/seen",
   newEvents: baseUrl+"/new/events",
   addEvents: baseUrl+"/addevent",
-  myEvents: baseUrl+"/events/"+localStorage.getItem('userId')[0],
+  myEvents: baseUrl+"/events/myevents/"+localStorage.getItem('userId')[0],
 }
 
 const defHeaders = {

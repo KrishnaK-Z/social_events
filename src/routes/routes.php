@@ -5,7 +5,7 @@ use App\controller\Events;
 use App\controller\SuggestedList;
 use App\controller\Reviews;
 use App\controller\Users;
-
+use App\controller\Participatoins;
 
 $app->group('/home',function(){
   $this->post('/signup', RegisterLogin::class . ':registerSubmit');
@@ -17,8 +17,6 @@ $app->put('/users/profile', Users::class . ':editUserDetails');
 $app->get('/users', Users::class . ':showAllUserDetails');
 
 $app->get('/find', Users::class . ':showUserDetails');
-
-$app->get('/events', Events::class . ':showAllEventsPage');
 
 
 $app->get('/sugg/notify', SuggestedList::class . ':loadSuggestions');
@@ -36,7 +34,9 @@ $app->post('/new/events', Events::class . ':showNewEvents');
 
 $app->post('/addevent', Events::class . ':addEvents');
 
-$app->get('/events/{id}', Events::class . ':showMyEvents');
+$app->get('/events/myevents/{myid}', Events::class . ':showMyEvents');
+
+$app->get('/events/{userId}', Events::class . ':showAllEventsPage');
 //
 // // $app->get('/users/profile?search=name', Users::class . ':showUserDetails');
 //

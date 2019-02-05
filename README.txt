@@ -126,3 +126,8 @@ array("message" => "updated  ")
 
 
 //
+
+
+
+
+select * from events inner join address_details on events.address_id = address_details.address_id inner join event_category on events.event_category_id = event_category.event_category_id inner join users on users.user_id = events.coordinator_id left join participation on participation.user_id = 1 and events.event_id = participation.event_id

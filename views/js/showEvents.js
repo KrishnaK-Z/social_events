@@ -29,6 +29,7 @@ let elementsType = {
 // To show notification for the newly added events
 fetchFunc( urls.newEvents, settings.postInit( JSON.stringify( newEventId() ) ) )
 .then( (datas) => {
+  log(datas);
   datas.forEach( (data)=>{
     elementsType.newEventsList.innerHTML+=constructNewEventList(data);
   } );
