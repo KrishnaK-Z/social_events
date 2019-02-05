@@ -1,6 +1,8 @@
 import  {urls, settings, fetchFunc}  from './fetchUtils.js'
-(function(){
+export function load(){
+  console.log("load function called");
   $('.event-card').hover(function(){
+    log("hover");
       $(this).addClass('animate');
      }, function(){
       $(this).removeClass('animate');
@@ -26,4 +28,4 @@ import  {urls, settings, fetchFunc}  from './fetchUtils.js'
       });
     });
   } );
-})();
+};

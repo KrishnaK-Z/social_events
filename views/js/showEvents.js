@@ -1,5 +1,6 @@
 import  {urls, settings, fetchFunc, loadJsFiles}  from './fetchUtils.js';
 import {constructEventCard, constructNewEventList} from './constructions.js';
+import {load} from './loadjs.js';
 
 (function(){
 
@@ -41,14 +42,15 @@ fetchFunc( urls.newEvents, settings.postInit( JSON.stringify( newEventId() ) ) )
 let loadAllEvents = (url) => {
   fetchFunc(url, settings.getInit)
   .then( (events) => {
-    log("fetch");
+    log(events);
     events.forEach( (event)=>{
       elementsType.showItemContainers.innerHTML+=constructEventCard(event);
     }  );
 
-    loadJsFiles([
-      './js/loadjs.js'
-    ]);
+    // loadJsFiles([
+    //   './js/loadjs.js'
+    // ]);
+    load();
 
   } )
   .catch( (error) => {

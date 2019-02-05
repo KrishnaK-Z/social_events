@@ -14,6 +14,7 @@ elementsType.addEventBtn.addEventListener("click", (event)=>{
   fetchFunc( urls.addEvents, settings.postInit( toJSONString( addEventForm ) ) )
   .then( (datas) => {
     log(datas);
+    window.location.href = "/social_events/views/home.html";
   } )
   .catch( (error) => {
     log(error);

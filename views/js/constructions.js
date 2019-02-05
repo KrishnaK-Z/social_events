@@ -33,7 +33,7 @@ export let constructEventCard = (event) => {
 
 
 
-export let constructNewEventList=( data )=>{
+export let constructNewEventList=( data ) => {
   let result = `<li>${data[0].event_name}</li>`;
   return result;
 }
