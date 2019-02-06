@@ -42,6 +42,16 @@ export let settings = {
       cache: "default",
       body: data
     }
+  },
+
+  deleteInit: (data)=>{
+    return {
+      method: "DELETE",
+      headers: defHeaders,
+      mode: "cors",
+      cache: "default",
+      body: data
+    }
   }
 }
 

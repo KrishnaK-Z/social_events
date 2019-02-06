@@ -15,9 +15,9 @@ export let constructEventCard = (event) => {
                   <div class="overlay"></div>`
 
                   if(`${event.participation_id}`>0)
-                  result += `<button type="join" name="join" class="join" type="cancel-event">CANCEL</button>`;
+                  result += `<button type="cancel" name="cancel" class="join cancel" id="${event.event_id}">CANCEL</button>`;
                   else
-                  result += `<button type="join" name="join" class="join" id="${event.event_id}" type="join-event">JOIN</button>`;
+                  result += `<button type="join" name="join" class="join" id="${event.event_id}">JOIN</button>`;
 
                   result += `<div class="details-container">
                           <span class="spots">${event.spots}</span>

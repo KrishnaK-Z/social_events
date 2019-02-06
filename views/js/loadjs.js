@@ -13,11 +13,25 @@ export function load(){
 
   let elements = {
     likeEvent: document.querySelectorAll('[type = "like"]'),
-    joinBtn: document.querySelectorAll('[type = "join"]')
+    joinBtns: document.querySelectorAll('[type = "join"]'),
+    cancelBtns: document.querySelectorAll('[type="cancel"]'),
   }
 
-  elements.joinBtn.forEach( (btn) => {
-    btn.addEventListener("click", (event) => {
+  elements.cancelBtns.forEach( (cancelBtn) => {
+    cancelBtn.addEventListener("click", (event)=>{
+      var url = "http://localhost/social_events/public/join/"+localStorage.getItem('userId')+"/events/"+event.target.id;
+      fetchFunc(url, settings.deleteInit(""))
+      .then( (data)=>{
+        log(data);
+      } )
+      .catch( (error)=>{
+        log(error);
+      } );
+    });
+  } );
+
+  elements.joinBtns.forEach( (joinBtn) => {
+    joinBtn.addEventListener("click", (event) => {
       var url = "http://localhost/social_events/public/join/"+localStorage.getItem('userId')+"/events/"+event.target.id;
       log(url);
       fetchFunc(url, settings.postInit(""))
