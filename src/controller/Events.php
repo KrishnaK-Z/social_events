@@ -64,7 +64,11 @@ class Events
     return $response->withJson($participateResponse);
   }
 
-
+  public function leaveEvent( $request, $response, $args )
+  {
+    $leaveResponse = $this->participateEvents->cancelParticipation($args);
+    return $response->withJson($leaveResponse);
+  }
 
   public function suggestEvent( $request, $response, $args )
   {

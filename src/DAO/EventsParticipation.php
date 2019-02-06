@@ -35,6 +35,12 @@
      return $results;
    }
 
+   public function cancelParticipation( $userId, $eventId ){
+     $wherePhrase = array('user_id'=>$userId, 'event_id'=>$eventId);
+     $results = parent::delete($this->tableName, $wherePhrase);
+     return $results;
+   }
+
  }
 
  ?>

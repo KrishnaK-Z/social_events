@@ -134,6 +134,33 @@ class DbConnect
       }
   }
 
+
+  public function delete($table, $wherePhrase)
+  {
+    try {
+      $where = $this->prepareNamedParams($wherePhrase);
+      $sql = 'DELETE FROM ' . $table . ' WHERE ' . $where;
+      if( !$this->conn->prepare($sql) ){
+        throw new PDOException(1,"Error Processing Request");
+      }
+      $this->query = $this->conn->prepare($sql);
+      foreach($wherePhrase as $param => $value)
+      {
+          $this->prepareBind($param,$value);
+      }
+      $this->query->execute();
+      return ($this->query->rowCount());
+
+    } catch (PDOException $e) {
+      $this->logger->log($e->getCode() , $e->getMessage());
+      return array("status" => "Invalid Data");
+    }catch (\Exception $e) {
+      $this->logger->log( $e->getCode(), $e->getMessage() );
+    }
+
+  }
+
+
   protected function prepareUpdateParams($wherePhrase)
   {
     try {

@@ -51,6 +51,19 @@
 
    }
 
+
+   public function cancelParticipation($datas){
+     $eventObject = $this->helper->getEventObject( $datas );
+     $userObject = $this->helper->getUserObject( $datas );
+     $eventsParticipation = new EventsParticipation();
+     if($eventsParticipation->searchExsistence( $userObject->getUserId(), $eventObject->getEventId() ) )
+     {
+       $eventsParticipation->cancelParticipation( $userObject->getUserId(), $eventObject->getEventId() );
+       return 1;
+     }
+     return 0;
+   }
+
  }
 
  ?>

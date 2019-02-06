@@ -2,7 +2,7 @@ import  {urls, settings, fetchFunc}  from './fetchUtils.js'
 export function load(){
   console.log("load function called");
   $('.event-card').hover(function(){
-    log("hover");
+    // log("hover");
       $(this).addClass('animate');
      }, function(){
       $(this).removeClass('animate');

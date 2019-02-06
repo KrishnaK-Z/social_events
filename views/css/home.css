@@ -228,7 +228,7 @@ a{
 .top-nav > li a {
   color: #00334e;
   padding: 0.6em .6em !important;
-  cursor: none;
+  cursor: pointer;
 }
 .top-nav img {
   display: block;
@@ -257,11 +257,24 @@ a{
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   border-radius: 5px;
   overflow: hidden;
+  z-index: 99;
+  transform: rotateX(90deg);
+  transition: all 0.3s ease;
+  transform-origin: top;
+  opacity: 0;
+  visibility: hidden;
 }
 
 .top-nav > li ul.newEventsList li{
   padding: 5px 10px;
 }
+
+.top-nav > li:hover ul.newEventsList{
+  transform: rotateY(0deg);
+  opacity: 1;
+  visibility: visible;
+}
+
 
 /* Layout for the list of events */
 .grid-wrapper{
