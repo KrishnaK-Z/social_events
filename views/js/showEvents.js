@@ -24,6 +24,7 @@ let elementsType = {
   suggNotify: document.querySelectorAll('[type = "sugg-notfy"]')[0],
   newEventsList: document.getElementsByClassName('newEventsList')[0],
   myEvents: document.querySelectorAll('[data-type="my-event"]')[0],
+  joinedEvents: document.querySelectorAll('[data-type="joined-event"]')[0],
 }
 
 // To show notification for the newly added events
@@ -43,6 +44,7 @@ fetchFunc( urls.newEvents, settings.postInit( JSON.stringify( newEventId() ) ) )
 let loadAllEvents = (url) => {
   fetchFunc(url, settings.getInit)
   .then( (events) => {
+    elementsType.showItemContainers.innerHTML = "";
     log(events);
     events.forEach( (event)=>{
       elementsType.showItemContainers.innerHTML+=constructEventCard(event);
@@ -66,6 +68,11 @@ loadAllEvents(urls.showAllEvents);
 elementsType.myEvents.addEventListener("click", (event)=>{
   elementsType.showItemContainers.innerHTML = "";
   loadAllEvents(urls.myEvents);
+});
+
+elementsType.joinedEvents.addEventListener("click", (event)=>{
+  elementsType.showItemContainers.innerHTML = "";
+  loadAllEvents(urls.joinedEvents);
 });
 
 // To load the number of new suggestions.

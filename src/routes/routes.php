@@ -39,6 +39,8 @@ $app->get('/events/myevents/{myid}', Events::class . ':showMyEvents');
 $app->get('/events/{userId}', Events::class . ':showAllEventsPage');
 
 $app->delete('/join/{userId}/events/{eventId}', Events::class . ':leaveEvent');
+
+$app->get('/events/join/{userId}', Events::class . ':showParticipatedEvent');
 //
 // // $app->get('/users/profile?search=name', Users::class . ':showUserDetails');
 //

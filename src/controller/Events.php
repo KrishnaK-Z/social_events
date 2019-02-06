@@ -82,6 +82,11 @@ class Events
     return $response->withJson($results);
   }
 
+  public function showParticipatedEvent( $request, $response, $args ){
+    $results = $this->eventsDelegate->getParticipatedEvents( $args['userId'] );
+    return $response->withJson($results);
+  }
+
 
 }
 

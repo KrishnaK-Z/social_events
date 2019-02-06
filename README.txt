@@ -131,3 +131,6 @@ array("message" => "updated  ")
 
 
 select * from events inner join address_details on events.address_id = address_details.address_id inner join event_category on events.event_category_id = event_category.event_category_id inner join users on users.user_id = events.coordinator_id left join participation on participation.user_id = 1 and events.event_id = participation.event_id
+
+
+SELECT events.event_id, participation.participation_id,users.user_id from events join users on events.coordinator_id = users.user_id join participation on participation.event_id = events.event_id WHERE participation.user_id = 1

@@ -9,6 +9,7 @@ export let urls = {
   newEvents: baseUrl+"/new/events",
   addEvents: baseUrl+"/addevent",
   myEvents: baseUrl+"/events/myevents/"+localStorage.getItem('userId')[0],
+  joinedEvents: baseUrl+"/events/join/"+localStorage.getItem('userId')[0],
 }
 
 const defHeaders = {

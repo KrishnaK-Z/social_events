@@ -41,10 +41,10 @@ class Events extends BaseDelegate
   }
 
 
-  public function filterEvent($filter, $value){
-    $eventsDao = new EventsDao();
-    return $eventsDao->eventsSearch( $filter, $value );
-  }
+  // public function filterEvent($filter, $value){
+  //   $eventsDao = new EventsDao();
+  //   return $eventsDao->eventsSearch( $filter, $value );
+  // }
 
 
   public function getNewEvents( $datas ){
@@ -59,6 +59,11 @@ class Events extends BaseDelegate
   public function showEventsByUserId( $userId ){
     $eventsDao = new EventsDao();
     return $eventsDao->eventByUserId( $userId );
+  }
+
+  public function getParticipatedEvents( $userId ){
+    $eventsDao = new EventsDao();
+    return $eventsDao->participatedEvents( $userId );
   }
 
 

@@ -36,8 +36,13 @@
 
     public function showAllEventsDetails($userId)
     {
-      $results = parent::hardCodeSelect("select events.event_id, events.event_name,events.spots,event_category.event_category_id,event_category.event_category_name,events.start_time,events.event_date,events.end_time, users.user_name,address_details.street_address, address_details.area, address_details.pincode,participation.participation_id from events inner join address_details on events.address_id = address_details.address_id inner join event_category on events.event_category_id = event_category.event_category_id inner join users on users.user_id = events.coordinator_id left join participation on participation.user_id = ".$userId."
-and participation.event_id = events.event_id");
+      $results = parent::hardCodeSelect("select events.event_id, events.event_name,events.spots,event_category.event_category_id,
+                                         event_category.event_category_name,events.start_time,events.event_date,events.end_time,
+                                         users.user_name,address_details.street_address, address_details.area, address_details.pincode,
+                                         participation.participation_id from events inner join address_details on events.address_id = address_details.address_id
+                                         inner join event_category on events.event_category_id = event_category.event_category_id
+                                         inner join users on users.user_id = events.coordinator_id left join participation on
+                                         participation.user_id = ".$userId." and participation.event_id = events.event_id");
       return $results;
     }
 
@@ -69,6 +74,19 @@ and participation.event_id = events.event_id");
                                     inner join users on users.user_id = events.coordinator_id where events.coordinator_id = ".$coordinatorId);
       return $results;
     }
+
+    public function participatedEvents( $userId ){
+      $results = parent::hardCodeSelect( "SELECT events.event_id, events.event_name,events.spots,event_category.event_category_id,
+                                          event_category.event_category_name,events.start_time,events.event_date,events.end_time,
+                                          users.user_name,address_details.street_address, address_details.area, address_details.pincode,
+                                          participation.participation_id from events join users on events.coordinator_id = users.user_id
+                                          join event_category on events.event_category_id = event_category.event_category_id
+                                          join address_details on events.address_id = address_details.address_id
+                                          join participation on participation.event_id = events.event_id WHERE participation.user_id = ".$userId );
+
+      return $results;
+    }
+
 
   }
 
