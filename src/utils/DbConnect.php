@@ -1,12 +1,14 @@
 <?php
 namespace App\utils;
+use App\utils\DB_Logger;
+use App\utils\Constants;
 use PDO;
 use PDOException;
 class DbConnect
 {
   private $conn = null;
   private $query;
-  protected $logger;
+  protected $logger, $constants;
   public function __construct()
   {
     try{
@@ -18,6 +20,7 @@ class DbConnect
             $dsn = $config['driver'] . ":host=".$config['server_name'].";dbname=".$config['db_name'];
             $this->conn = new PDO( $dsn, $config['user'], $config['pass'], $options);
             $this->logger = new DB_Logger("db");
+            $this->constants = new Constants();
       }
       } catch(PDOException $e) {
         $this->logger->log($e->getCode() , $e->getMessage());
