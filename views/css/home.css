@@ -367,12 +367,19 @@ a{
   outline: none;
   opacity: 0;
 }
+.cancel{
+  background: #003666;
+}
+
 .event-card.animate .overlay, .event-card.animate .join{
 	opacity:0.7;
   transition: all 200ms ease-out;
 }
 .join:hover{
   background: red;
+}
+.cancel:hover{
+  background: #050f2c;
 }
 .more-details{
 	padding:2px 0 0;

@@ -23,6 +23,7 @@ export function load(){
       fetchFunc(url, settings.deleteInit(""))
       .then( (data)=>{
         log(data);
+        // location.reload();
       } )
       .catch( (error)=>{
         log(error);
