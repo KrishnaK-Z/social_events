@@ -30,7 +30,7 @@ let elementsType = {
 // To show notification for the newly added events
 fetchFunc( urls.newEvents, settings.postInit( JSON.stringify( newEventId() ) ) )
 .then( (datas) => {
-  log(datas);
+  // log(datas);
   datas.forEach( (data)=>{
     elementsType.newEventsList.innerHTML+=constructNewEventList(data);
   } );
@@ -45,7 +45,7 @@ let loadAllEvents = (url) => {
   fetchFunc(url, settings.getInit)
   .then( (events) => {
     elementsType.showItemContainers.innerHTML = "";
-    log(events);
+    // log(events);
     events.forEach( (event)=>{
       elementsType.showItemContainers.innerHTML+=constructEventCard(event);
     }  );
@@ -128,5 +128,6 @@ elementsType.showAllEvents.addEventListener( 'click',(event) => {
 // Calls in an equal interval on page load.
 setInterval(suggNotify, 3000);
 setInterval(eventNotify, 3000);
+
 
 })();

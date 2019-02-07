@@ -17,14 +17,14 @@ export function load(){
     cancelBtns: document.querySelectorAll('[type="cancel"]'),
   }
 
-  elements.cancelBtns.forEach( (cancelBtn) => {
+  elements.cancelBtns.forEach( (cancelBtn, index) => {
     cancelBtn.addEventListener("click", (event)=>{
-      var url = "http://localhost/social_events/public/join/"+localStorage.getItem('userId')+"/events/"+event.target.id;
+      let url = "http://localhost/social_events/public/join/"+localStorage.getItem('userId')+"/events/"+event.target.id;
       fetchFunc(url, settings.deleteInit(""))
       .then( (data)=>{
-        log("join");
-        event.target.classList.remove("btn-show");
-        event.target.nextSibling.classList.add("btn-show");
+        log("cancel");
+        elements.cancelBtns[index].classList.toggle("btn-show");
+        elements.joinBtns[index].classList.toggle("btn-show");
       } )
       .catch( (error)=>{
         log(error);
@@ -32,15 +32,14 @@ export function load(){
     });
   } );
 
-  elements.joinBtns.forEach( (joinBtn) => {
+  elements.joinBtns.forEach( (joinBtn, index) => {
     joinBtn.addEventListener("click", (event) => {
-      var url = "http://localhost/social_events/public/join/"+localStorage.getItem('userId')+"/events/"+event.target.id;
-      log(url);
+      let url = "http://localhost/social_events/public/join/"+localStorage.getItem('userId')+"/events/"+event.target.id;
       fetchFunc(url, settings.postInit(""))
       .then( (data) => {
         log("join");
-        event.target.classList.remove("btn-show");
-        event.target.nextSibling.classList.add("btn-show");
+        elements.cancelBtns[index].classList.toggle("btn-show");
+        elements.joinBtns[index].classList.toggle("btn-show");
       } )
       .catch((error) => {
         log(error);
