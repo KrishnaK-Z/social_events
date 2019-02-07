@@ -349,7 +349,7 @@ a{
 	background:#f85a40;
 	opacity:0;
 }
-.join{
+.join-cancel-btn{
   position: absolute;
   top: 30%;
   left: 50%;
@@ -357,21 +357,26 @@ a{
   width: 40%;
   height: 45px;
   border: none;
-  background: transparent;
   color: #fff;
-  background: #ce181e;
   /* border: 2px solid #e4002b; */
   border-radius: 20px;
   font-size: 1.5rem;
   cursor: pointer;
   outline: none;
   opacity: 0;
+  display: none;
+}
+.btn-show{
+  display: block;
+}
+.join{
+  background: #ce181e;
 }
 .cancel{
   background: #003666;
 }
 
-.event-card.animate .overlay, .event-card.animate .join{
+.event-card.animate .overlay, .event-card.animate .join-cancel-btn{
 	opacity:0.7;
   transition: all 200ms ease-out;
 }

@@ -32,3 +32,4 @@
 [2019-02-06 09:49:00] Event_Management_db.INFO: Login request for the userEmail  {"userEmail":"krishna@gmail.com","password":"veronica"} [] []
 [2019-02-06 09:49:14] Event_Management_db.INFO: Login request for the userEmail  {"userEmail":"krishna@gmail.com","password":"veronica"} [] []
 [2019-02-06 12:55:47] Event_Management_db.INFO: Login request for the userEmail  {"userEmail":"krishna@gmail.com","password":"veronica"} [] []
+[2019-02-07 10:02:47] Event_Management_db.INFO: Login request for the userEmail  {"userEmail":"krishna@gmail.com","password":"veronica"} [] []

@@ -22,8 +22,9 @@ export function load(){
       var url = "http://localhost/social_events/public/join/"+localStorage.getItem('userId')+"/events/"+event.target.id;
       fetchFunc(url, settings.deleteInit(""))
       .then( (data)=>{
-        log(data);
-        // document.location.reload(true);
+        log("join");
+        event.target.classList.remove("btn-show");
+        event.target.nextSibling.classList.add("btn-show");
       } )
       .catch( (error)=>{
         log(error);
@@ -37,8 +38,9 @@ export function load(){
       log(url);
       fetchFunc(url, settings.postInit(""))
       .then( (data) => {
-        log(data);
-        // document.location.reload(true);
+        log("join");
+        event.target.classList.remove("btn-show");
+        event.target.nextSibling.classList.add("btn-show");
       } )
       .catch((error) => {
         log(error);
