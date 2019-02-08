@@ -289,8 +289,7 @@ input[type=number]::-webkit-outer-spin-button {
     display: flex;
     justify-content: space-around;
     padding: 3%;
-    height: 100vh;
-    overflow: auto;
+    /* height: 100vh; */
     flex-wrap: wrap;
 }
 .grid-wrapper::after{
@@ -335,7 +334,7 @@ input[type=number]::-webkit-outer-spin-button {
   transition: all 200ms ease-out;
 }
 .event-card.animate .details-container{
-	top:272px;
+	top:230px;
   transition: all 200ms ease-out;
 }
 .details-container .event-name{

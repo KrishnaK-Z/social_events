@@ -4,6 +4,10 @@ import {load} from './loadjs.js';
 
 (function(){
 
+
+// Filter the events bsed on the category
+
+
 let eventArray = {
   loadedEvents: localStorage.getItem('loadedId') ?
                   JSON.parse(localStorage.getItem('loadedId')) : [],
@@ -26,7 +30,12 @@ let elementsType = {
   myEvents: document.querySelectorAll('[data-type="my-event"]')[0],
   joinedEvents: document.querySelectorAll('[data-type="joined-event"]')[0],
   myAccount: document.querySelectorAll('[data-type="my-account"]')[0],
+  search: document.getElementsByClassName('quicksearch')[0],
 }
+
+elementsType.search.addEventListener("keyup", (event)=>{
+  log(event.target.value);
+});
 
 elementsType.myAccount.addEventListener("click", (event)=>{
   elementsType.showItemContainers.innerHTML = constructAccountInfoForm();

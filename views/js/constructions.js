@@ -25,7 +25,9 @@ export let constructEventCard = (event) => {
                           <span class="spots">${event.spots}</span>
                           <span classhi first notes="event-name">${event.event_name}</span>
                           <p id="${event.user_id}"><strong>Hosted By</strong><span> ${event.user_name}</span></p>
-                          <div class="more-details">
+													<div class="more-details">
+															<strong>Category</strong>
+															<span>${event.event_category_name}</span>
                               <strong>Venue</strong>
                               <span>${event.street_address}, ${event.area}, ${event.pincode}</span>
                               <strong>Timing</strong>
