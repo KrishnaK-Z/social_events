@@ -1,5 +1,5 @@
 import  {urls, settings, fetchFunc, loadJsFiles}  from './fetchUtils.js';
-import {constructEventCard, constructNewEventList} from './constructions.js';
+import {constructEventCard, constructNewEventList, constructAccountInfoForm} from './constructions.js';
 import {load} from './loadjs.js';
 
 (function(){
@@ -25,7 +25,12 @@ let elementsType = {
   newEventsList: document.getElementsByClassName('newEventsList')[0],
   myEvents: document.querySelectorAll('[data-type="my-event"]')[0],
   joinedEvents: document.querySelectorAll('[data-type="joined-event"]')[0],
+  myAccount: document.querySelectorAll('[data-type="my-account"]')[0],
 }
+
+elementsType.myAccount.addEventListener("click", (event)=>{
+  elementsType.showItemContainers.innerHTML = constructAccountInfoForm();
+});
 
 // To show notification for the newly added events
 fetchFunc( urls.newEvents, settings.postInit( JSON.stringify( newEventId() ) ) )

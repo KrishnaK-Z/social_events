@@ -1,7 +1,7 @@
 export let constructEventCard = (event) => {
 
     let result =
-    `<div class="event-space" data-category="${event.event_category_name}">
+    `<div class="event-space grid-wrapper-item" data-category="${event.event_category_name}">
       <div class="hanging-bar">
         <i class="fas fa-pencil-alt"></i>
         <i class="fas fa-star"></i>
@@ -37,6 +37,69 @@ export let constructEventCard = (event) => {
       return result;
 }
 
+
+export let constructAccountInfoForm=()=>{
+  let result = `
+  <form class="edit-form">
+		<fieldset>
+			<legend>Account Info</legend>
+
+			<div class="info">
+				<div class="message">
+					Hosted: 45
+				</div>
+				<div class="message">
+					Participated: 123
+				</div>
+			</div>
+
+				<div>
+				<label class="label" for="cd-name">User Name</label>
+				<input class="user" type="text" name="userName" id="userName" required>
+		    </div>
+
+		    <div>
+		    	<label class="label" for="userEmail">Email</label>
+				<input type="email" name="userEmail" id="userEmail" required>
+		    </div>
+
+				<div>
+				<label class="label" for="phonenumber">Phone Number</label>
+				<input class="user" type="number" name="phonenumber" id="phonenumber" required>
+		    </div>
+
+				<div>
+		    	<label class="label" for="password">Password</label>
+				<input type="password" name="password" id="password" required>
+		    </div>
+
+				<div>
+		    	<label class="label" for="confpassword">Confirm Password</label>
+				<input type="password" name="confpassword" id="confpassword" required>
+		    </div>
+
+				<div>
+				<label class="label" for="streetAddress">Street Address</label>
+				<input type="text" name="streetAddress" id="streetAddress" required>
+		    </div>
+
+				<div>
+				<label class="label" for="area">Area</label>
+				<input type="text" name="area" id="area" required>
+		    </div>
+
+				<div>
+				<label class="label" for="pincode">Pincode</label>
+				<input type="number" name="pincode" id="pincode" required>
+		    </div>
+
+				<input type="submit" value="Update Account Details">
+		</fieldset>
+
+	</form>
+  `;
+  return result;
+}
 
 
 
