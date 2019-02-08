@@ -1,7 +1,7 @@
 export let constructEventCard = (event) => {
 
     let result =
-    `<div class="event-space grid-wrapper-item" data-category="${event.event_category_name}">
+    `<div class="grid-wrapper-item event-space" data-filter="${event.event_category_name}">
       <div class="hanging-bar">
         <i class="fas fa-pencil-alt"></i>
         <i class="fas fa-star"></i>

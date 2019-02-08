@@ -6,7 +6,7 @@
 body{
   margin:0;
   padding:0;
-
+  background: #e5e5e5;
 }
 a{
   text-decoration: none;
@@ -121,8 +121,7 @@ input[type=number]::-webkit-outer-spin-button {
 .main-wrapper{
   width: calc(100%-240px);
   height: 100%;
-  min-height: 100vh;
-  background: #e5e5e5;
+  min-height: 100%;
 }
 .top-bar{
   position: relative;
@@ -286,6 +285,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 /* Layout for the list of events */
 .grid-wrapper{
+  position: relative;
     display: flex;
     justify-content: space-around;
     padding: 3%;
@@ -299,9 +299,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 /* Events Container */
 .event-space{
-    position: relative;
-    flex-basis:390px;
-    /* width: 390px; */
+    width: 390px;
     height:500px;
     perspective: 3000px;
     margin-bottom: 30px;

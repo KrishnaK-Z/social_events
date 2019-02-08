@@ -66,7 +66,7 @@
               <div class="ham"></div>
             </div>
 
-            <form class="search" method="post">
+            <form class="search" id="filter" method="get">
               <input type="text" name="search" class="quicksearch" placeholder="search...">
             </form>
 
@@ -91,7 +91,7 @@
           <div class="grid-wrapper">
 
             <!-- Event Card Layout -->
-            <!-- <div class="event-space">
+            <div class="event-space grid-wrapper-item">
               <div class="hanging-bar">
                 <i class="fas fa-pencil-alt"></i>
                 <i class="fas fa-star"></i>
@@ -106,7 +106,7 @@
                       <button type="join" name="join" class="join">JOIN</button>
                           <div class="details-container">
                               <span class="spots">23/100</span>
-                              <span class="event-name">Event Name</span>
+                              <span class="event-name">Party</span>
                               <p>Put Chuttney</p>
                               <div class="more-details">
                                   <strong>Venue</strong>
@@ -116,19 +116,45 @@
                               </div>
                           </div>
               </div>
-            </div> -->
+            </div>
 
+
+            <div class="event-space grid-wrapper-item">
+              <div class="hanging-bar">
+                <i class="fas fa-pencil-alt"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-thumbs-up" type="like"></i>
+                <i class="fas fa-user-friends"></i>
+              </div>
+              <div class="event-card">
+
+                  	<div class="shadow"></div>
+                      <img src="https://images.unsplash.com/photo-1539805430028-e3aa3f6c2172?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=688&q=80" alt=""/>
+                      <div class="overlay"></div>
+                      <button type="join" name="join" class="join">JOIN</button>
+                          <div class="details-container">
+                              <span class="spots">23/100</span>
+                              <span class="event-name">Launch</span>
+                              <p>Put Chuttney</p>
+                              <div class="more-details">
+                                  <strong>Venue</strong>
+                                  <span>123 Street, Area, Ch-34.</span>
+                                  <strong>Timing</strong>
+                                  <span>8:00am to 7:00pm</span>
+                              </div>
+                          </div>
+              </div>
+            </div>
 
           </div>
         </div>
     </div>
   </body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
-  
+  <script src='http://npmcdn.com/isotope-layout@3/dist/isotope.pkgd.js'></script>
   <script type="text/javascript" src="js/home.js"></script>
 
   <script type="text/javascript" src="./js/jsUtils.js"></script>
   <script type="module" src="./js/showEvents.js"></script>
-  <!-- <script type="text/javascript" src="./js/loadjs.js"></script> -->
+  <!-- <script src="./js/isotope.pkgd.min.js"></script> -->
 </html>

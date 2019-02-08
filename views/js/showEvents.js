@@ -1,11 +1,14 @@
 import  {urls, settings, fetchFunc, loadJsFiles}  from './fetchUtils.js';
 import {constructEventCard, constructNewEventList, constructAccountInfoForm} from './constructions.js';
-import {load} from './loadjs.js';
+import {load, filter} from './loadjs.js';
+
 
 (function(){
 
-
 // Filter the events bsed on the category
+
+
+// quick search regex
 
 
 let eventArray = {
@@ -33,13 +36,12 @@ let elementsType = {
   search: document.getElementsByClassName('quicksearch')[0],
 }
 
-elementsType.search.addEventListener("keyup", (event)=>{
-  log(event.target.value);
-});
 
 elementsType.myAccount.addEventListener("click", (event)=>{
   elementsType.showItemContainers.innerHTML = constructAccountInfoForm();
 });
+
+
 
 // To show notification for the newly added events
 fetchFunc( urls.newEvents, settings.postInit( JSON.stringify( newEventId() ) ) )

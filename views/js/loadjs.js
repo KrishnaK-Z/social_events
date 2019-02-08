@@ -1,5 +1,6 @@
 import  {urls, settings, fetchFunc}  from './fetchUtils.js'
-export function load(){
+
+function load(){
   // Event Card the more details animation
   $('.event-card').hover(function(){
     // log("hover");
@@ -17,6 +18,8 @@ export function load(){
     joinBtns: document.querySelectorAll('[type = "join"]'),
     cancelBtns: document.querySelectorAll('[type="cancel"]'),
   }
+
+
 
 // Cancel button for the event cards
   elements.cancelBtns.forEach( (cancelBtn, index) => {
@@ -50,7 +53,41 @@ export function load(){
     });
   } );
 
-
-
+filter();
 
 }
+
+function filter(){
+
+let debounce=(func, delay)=>{
+  let inDebounce
+  return function() {
+    // clearTimeout();
+    const context = this
+    const args = arguments
+    clearTimeout(inDebounce)
+    inDebounce = setTimeout(() => func.apply(context, args), delay)
+      }
+  }
+
+  var qsRegex;
+
+  var $grid = $('.grid-wrapper').isotope({
+    itemSelector: '.grid-wrapper-item',
+    layoutMode: 'fitRows',
+    filter: function() {
+
+      return qsRegex ? $(this).text().match( qsRegex ) : true;
+    }
+  });
+
+  // use value of search field to filter
+  var $quicksearch = $('.quicksearch').keyup( debounce( function() {
+    qsRegex = new RegExp( $quicksearch.val(), 'gi' );
+    $grid.isotope();
+  }, 200 ) );
+
+}
+
+
+export {load, filter}
